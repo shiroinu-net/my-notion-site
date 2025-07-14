@@ -1,5 +1,5 @@
 import { Client } from '@notionhq/client';
-import { BlockObjectResponse, PageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { BlockObjectResponse, PageObjectResponse, RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -40,6 +40,6 @@ export async function getPageBlocks(blockId: string) {
 }
 
 // Notionのプロパティからプレーンテキストを取得するヘルパー関数
-export function getRichTextContent(richTextProperty: any[]): string {
+export function getRichTextContent(richTextProperty: RichTextItemResponse[]): string {
   return richTextProperty.map((text) => text.plain_text).join('');
 }

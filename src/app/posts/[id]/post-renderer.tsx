@@ -18,11 +18,16 @@ export default function PostRenderer({ blocks }: Props) {
   }
 
   // react-notion-xが期待するデータ形式に変換
-  const recordMap = {
+  const recordMap: any = {
     block: blocks.reduce((acc, block) => {
       acc[block.id] = { value: block };
       return acc;
-    }, {}),
+    }, {} as Record<string, { value: BlockObjectResponse }>),
+    collection: {},
+    collection_view: {},
+    notion_user: {},
+    collection_query: {},
+    signed_urls: {},
   };
 
   return (
