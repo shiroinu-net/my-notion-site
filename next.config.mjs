@@ -1,6 +1,4 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+const nextConfig = {
   output: 'export',
 
   // GitHub Pagesでリポジトリ名がパスに含まれる場合（例: your-username.github.io/your-repo-name/）

@@ -1,14 +1,8 @@
 import { getPageBlocks, getDatabasePages, getRichTextContent } from '../../../../lib/notion';
 import Link from 'next/link';
-import PostRenderer from './post-renderer'; // 新しく作成したクライアントコンポーネント
+import PostRenderer from './post-renderer';
 
 export const revalidate = 60;
-
-type Props = {
-  params: {
-    id: string;
-  };
-};
 
 export async function generateStaticParams() {
   const pages = await getDatabasePages();
@@ -17,7 +11,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function PostPage({ params }: Props) {
+export default async function PostPage({ params }: { params: { id: string } }) {
   const pageId = params.id;
   const blocks = await getPageBlocks(pageId);
   const pages = await getDatabasePages();
