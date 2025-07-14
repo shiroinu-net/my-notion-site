@@ -14,7 +14,7 @@ if (!DATABASE_ID) {
 // データベースからすべてのページを取得する関数
 export async function getDatabasePages() {
   const response = await notion.databases.query({
-    database_id: DATABASE_ID,
+    database_id: DATABASE_ID!,
     // ここでフィルターやソートを追加することも可能
     // filter: {
     //   property: 'Published',
