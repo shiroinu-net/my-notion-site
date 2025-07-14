@@ -5,7 +5,11 @@ const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
-const DATABASE_ID = process.env.NOTION_DATABASE_ID || '';
+const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+
+if (!DATABASE_ID) {
+  throw new Error('NOTION_DATABASE_ID is not defined in environment variables.');
+}
 
 // データベースからすべてのページを取得する関数
 export async function getDatabasePages() {
