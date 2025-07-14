@@ -1,0 +1,316 @@
+﻿2025-07-14T07:40:39.3266480Z Current runner version: '2.326.0'
+2025-07-14T07:40:39.3290846Z ##[group]Operating System
+2025-07-14T07:40:39.3291825Z Ubuntu
+2025-07-14T07:40:39.3292421Z 24.04.2
+2025-07-14T07:40:39.3292908Z LTS
+2025-07-14T07:40:39.3293341Z ##[endgroup]
+2025-07-14T07:40:39.3293909Z ##[group]Runner Image
+2025-07-14T07:40:39.3294476Z Image: ubuntu-24.04
+2025-07-14T07:40:39.3294996Z Version: 20250710.1.0
+2025-07-14T07:40:39.3296011Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250710.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-07-14T07:40:39.3297373Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250710.1
+2025-07-14T07:40:39.3298241Z ##[endgroup]
+2025-07-14T07:40:39.3298736Z ##[group]Runner Image Provisioner
+2025-07-14T07:40:39.3299354Z 2.0.449.1
+2025-07-14T07:40:39.3299776Z ##[endgroup]
+2025-07-14T07:40:39.3300837Z ##[group]GITHUB_TOKEN Permissions
+2025-07-14T07:40:39.3302786Z Contents: read
+2025-07-14T07:40:39.3303302Z Metadata: read
+2025-07-14T07:40:39.3304114Z Packages: read
+2025-07-14T07:40:39.3304642Z ##[endgroup]
+2025-07-14T07:40:39.3306680Z Secret source: Actions
+2025-07-14T07:40:39.3307331Z Prepare workflow directory
+2025-07-14T07:40:39.3631741Z Prepare all required actions
+2025-07-14T07:40:39.3669384Z Getting action download info
+2025-07-14T07:40:39.8588927Z ##[group]Download immutable action package 'actions/checkout@v3'
+2025-07-14T07:40:39.8590048Z Version: 3.6.0
+2025-07-14T07:40:39.8590929Z Digest: sha256:942562b9c7d4b1f2557f1da21f4d3eb4eb4fd01f2ad78b2a6e187d1b193e0a0f
+2025-07-14T07:40:39.8592306Z Source commit SHA: f43a0e5ff2bd294095638e18286ca9a3d1956744
+2025-07-14T07:40:39.8593120Z ##[endgroup]
+2025-07-14T07:40:39.9476121Z ##[group]Download immutable action package 'actions/setup-node@v3'
+2025-07-14T07:40:39.9476918Z Version: 3.9.1
+2025-07-14T07:40:39.9477656Z Digest: sha256:d8c8dbd6e63927801f9de42620f961a361b03be6034dcc11e83ca01f50cb9f40
+2025-07-14T07:40:39.9478667Z Source commit SHA: 3235b876344d2a9aa001b8d1453c930bba69e610
+2025-07-14T07:40:39.9479357Z ##[endgroup]
+2025-07-14T07:40:40.2546804Z Download action repository 'peaceiris/actions-gh-pages@v3' (SHA:373f7f263a76c20808c831209c920827a82a2847)
+2025-07-14T07:40:40.8616623Z Complete job name: build-and-deploy
+2025-07-14T07:40:40.9387358Z ##[group]Run actions/checkout@v3
+2025-07-14T07:40:40.9388744Z with:
+2025-07-14T07:40:40.9389561Z   repository: shiroinu-net/my-notion-site
+2025-07-14T07:40:40.9390871Z   token: ***
+2025-07-14T07:40:40.9391808Z   ssh-strict: true
+2025-07-14T07:40:40.9392628Z   persist-credentials: true
+2025-07-14T07:40:40.9393523Z   clean: true
+2025-07-14T07:40:40.9394319Z   sparse-checkout-cone-mode: true
+2025-07-14T07:40:40.9395287Z   fetch-depth: 1
+2025-07-14T07:40:40.9396050Z   fetch-tags: false
+2025-07-14T07:40:40.9396806Z   lfs: false
+2025-07-14T07:40:40.9397529Z   submodules: false
+2025-07-14T07:40:40.9398324Z   set-safe-directory: true
+2025-07-14T07:40:40.9399466Z ##[endgroup]
+2025-07-14T07:40:41.0950028Z Syncing repository: shiroinu-net/my-notion-site
+2025-07-14T07:40:41.0954125Z ##[group]Getting Git version info
+2025-07-14T07:40:41.0955749Z Working directory is '/home/runner/work/my-notion-site/my-notion-site'
+2025-07-14T07:40:41.0957854Z [command]/usr/bin/git version
+2025-07-14T07:40:41.0986784Z git version 2.50.1
+2025-07-14T07:40:41.1016708Z ##[endgroup]
+2025-07-14T07:40:41.1034466Z Temporarily overriding HOME='/home/runner/work/_temp/c8f4020e-119a-41ed-a40d-e26ee367a68c' before making global git config changes
+2025-07-14T07:40:41.1038104Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-14T07:40:41.1040451Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my-notion-site/my-notion-site
+2025-07-14T07:40:41.1071910Z Deleting the contents of '/home/runner/work/my-notion-site/my-notion-site'
+2025-07-14T07:40:41.1075524Z ##[group]Initializing the repository
+2025-07-14T07:40:41.1078683Z [command]/usr/bin/git init /home/runner/work/my-notion-site/my-notion-site
+2025-07-14T07:40:41.1149771Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-07-14T07:40:41.1153057Z hint: is subject to change. To configure the initial branch name to use in all
+2025-07-14T07:40:41.1156488Z hint: of your new repositories, which will suppress this warning, call:
+2025-07-14T07:40:41.1158949Z hint:
+2025-07-14T07:40:41.1160521Z hint: 	git config --global init.defaultBranch <name>
+2025-07-14T07:40:41.1162720Z hint:
+2025-07-14T07:40:41.1164593Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-07-14T07:40:41.1167765Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-07-14T07:40:41.1169755Z hint:
+2025-07-14T07:40:41.1170573Z hint: 	git branch -m <name>
+2025-07-14T07:40:41.1171645Z hint:
+2025-07-14T07:40:41.1172836Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-07-14T07:40:41.1175721Z Initialized empty Git repository in /home/runner/work/my-notion-site/my-notion-site/.git/
+2025-07-14T07:40:41.1180777Z [command]/usr/bin/git remote add origin https://github.com/shiroinu-net/my-notion-site
+2025-07-14T07:40:41.1198682Z ##[endgroup]
+2025-07-14T07:40:41.1201005Z ##[group]Disabling automatic garbage collection
+2025-07-14T07:40:41.1203449Z [command]/usr/bin/git config --local gc.auto 0
+2025-07-14T07:40:41.1231653Z ##[endgroup]
+2025-07-14T07:40:41.1233951Z ##[group]Setting up auth
+2025-07-14T07:40:41.1238144Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-14T07:40:41.1268754Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-14T07:40:41.1544334Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-14T07:40:41.1571590Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-14T07:40:41.1797881Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-07-14T07:40:41.1832892Z ##[endgroup]
+2025-07-14T07:40:41.1834261Z ##[group]Fetching the repository
+2025-07-14T07:40:41.1843368Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +b81650800e4879fda897d6741031109ac5e9f451:refs/remotes/origin/main
+2025-07-14T07:40:41.5102966Z remote: Enumerating objects: 38, done.        
+2025-07-14T07:40:41.5104399Z remote: Counting objects:   2% (1/38)        
+2025-07-14T07:40:41.5105586Z remote: Counting objects:   5% (2/38)        
+2025-07-14T07:40:41.5106771Z remote: Counting objects:   7% (3/38)        
+2025-07-14T07:40:41.5107948Z remote: Counting objects:  10% (4/38)        
+2025-07-14T07:40:41.5109122Z remote: Counting objects:  13% (5/38)        
+2025-07-14T07:40:41.5110296Z remote: Counting objects:  15% (6/38)        
+2025-07-14T07:40:41.5111631Z remote: Counting objects:  18% (7/38)        
+2025-07-14T07:40:41.5112764Z remote: Counting objects:  21% (8/38)        
+2025-07-14T07:40:41.5113888Z remote: Counting objects:  23% (9/38)        
+2025-07-14T07:40:41.5115006Z remote: Counting objects:  26% (10/38)        
+2025-07-14T07:40:41.5116142Z remote: Counting objects:  28% (11/38)        
+2025-07-14T07:40:41.5117274Z remote: Counting objects:  31% (12/38)        
+2025-07-14T07:40:41.5118395Z remote: Counting objects:  34% (13/38)        
+2025-07-14T07:40:41.5119529Z remote: Counting objects:  36% (14/38)        
+2025-07-14T07:40:41.5120637Z remote: Counting objects:  39% (15/38)        
+2025-07-14T07:40:41.5121873Z remote: Counting objects:  42% (16/38)        
+2025-07-14T07:40:41.5122989Z remote: Counting objects:  44% (17/38)        
+2025-07-14T07:40:41.5124116Z remote: Counting objects:  47% (18/38)        
+2025-07-14T07:40:41.5125238Z remote: Counting objects:  50% (19/38)        
+2025-07-14T07:40:41.5126357Z remote: Counting objects:  52% (20/38)        
+2025-07-14T07:40:41.5127780Z remote: Counting objects:  55% (21/38)        
+2025-07-14T07:40:41.5128893Z remote: Counting objects:  57% (22/38)        
+2025-07-14T07:40:41.5130077Z remote: Counting objects:  60% (23/38)        
+2025-07-14T07:40:41.5131193Z remote: Counting objects:  63% (24/38)        
+2025-07-14T07:40:41.5132419Z remote: Counting objects:  65% (25/38)        
+2025-07-14T07:40:41.5133606Z remote: Counting objects:  68% (26/38)        
+2025-07-14T07:40:41.5134709Z remote: Counting objects:  71% (27/38)        
+2025-07-14T07:40:41.5135821Z remote: Counting objects:  73% (28/38)        
+2025-07-14T07:40:41.5136933Z remote: Counting objects:  76% (29/38)        
+2025-07-14T07:40:41.5138042Z remote: Counting objects:  78% (30/38)        
+2025-07-14T07:40:41.5139156Z remote: Counting objects:  81% (31/38)        
+2025-07-14T07:40:41.5140264Z remote: Counting objects:  84% (32/38)        
+2025-07-14T07:40:41.5141472Z remote: Counting objects:  86% (33/38)        
+2025-07-14T07:40:41.5142594Z remote: Counting objects:  89% (34/38)        
+2025-07-14T07:40:41.5143697Z remote: Counting objects:  92% (35/38)        
+2025-07-14T07:40:41.5144806Z remote: Counting objects:  94% (36/38)        
+2025-07-14T07:40:41.5145913Z remote: Counting objects:  97% (37/38)        
+2025-07-14T07:40:41.5147002Z remote: Counting objects: 100% (38/38)        
+2025-07-14T07:40:41.5148167Z remote: Counting objects: 100% (38/38), done.        
+2025-07-14T07:40:41.5149364Z remote: Compressing objects:   3% (1/32)        
+2025-07-14T07:40:41.5150520Z remote: Compressing objects:   6% (2/32)        
+2025-07-14T07:40:41.5151815Z remote: Compressing objects:   9% (3/32)        
+2025-07-14T07:40:41.5152973Z remote: Compressing objects:  12% (4/32)        
+2025-07-14T07:40:41.5154124Z remote: Compressing objects:  15% (5/32)        
+2025-07-14T07:40:41.5155268Z remote: Compressing objects:  18% (6/32)        
+2025-07-14T07:40:41.5156413Z remote: Compressing objects:  21% (7/32)        
+2025-07-14T07:40:41.5157587Z remote: Compressing objects:  25% (8/32)        
+2025-07-14T07:40:41.5158745Z remote: Compressing objects:  28% (9/32)        
+2025-07-14T07:40:41.5160084Z remote: Compressing objects:  31% (10/32)        
+2025-07-14T07:40:41.5161390Z remote: Compressing objects:  34% (11/32)        
+2025-07-14T07:40:41.5162575Z remote: Compressing objects:  37% (12/32)        
+2025-07-14T07:40:41.5170369Z remote: Compressing objects:  40% (13/32)        
+2025-07-14T07:40:41.5171726Z remote: Compressing objects:  43% (14/32)        
+2025-07-14T07:40:41.5172910Z remote: Compressing objects:  46% (15/32)        
+2025-07-14T07:40:41.5174622Z remote: Compressing objects:  50% (16/32)        
+2025-07-14T07:40:41.5176067Z remote: Compressing objects:  53% (17/32)        
+2025-07-14T07:40:41.5177481Z remote: Compressing objects:  56% (18/32)        
+2025-07-14T07:40:41.5178794Z remote: Compressing objects:  59% (19/32)        
+2025-07-14T07:40:41.5180209Z remote: Compressing objects:  62% (20/32)        
+2025-07-14T07:40:41.5181851Z remote: Compressing objects:  65% (21/32)        
+2025-07-14T07:40:41.5183281Z remote: Compressing objects:  68% (22/32)        
+2025-07-14T07:40:41.5184597Z remote: Compressing objects:  71% (23/32)        
+2025-07-14T07:40:41.5186123Z remote: Compressing objects:  75% (24/32)        
+2025-07-14T07:40:41.5187533Z remote: Compressing objects:  78% (25/32)        
+2025-07-14T07:40:41.5189031Z remote: Compressing objects:  81% (26/32)        
+2025-07-14T07:40:41.5190377Z remote: Compressing objects:  84% (27/32)        
+2025-07-14T07:40:41.5192049Z remote: Compressing objects:  87% (28/32)        
+2025-07-14T07:40:41.5193468Z remote: Compressing objects:  90% (29/32)        
+2025-07-14T07:40:41.5194823Z remote: Compressing objects:  93% (30/32)        
+2025-07-14T07:40:41.5196245Z remote: Compressing objects:  96% (31/32)        
+2025-07-14T07:40:41.5197672Z remote: Compressing objects: 100% (32/32)        
+2025-07-14T07:40:41.5199165Z remote: Compressing objects: 100% (32/32), done.        
+2025-07-14T07:40:41.5541748Z remote: Total 38 (delta 1), reused 30 (delta 1), pack-reused 0 (from 0)        
+2025-07-14T07:40:41.5653482Z From https://github.com/shiroinu-net/my-notion-site
+2025-07-14T07:40:41.5655826Z  * [new ref]         b81650800e4879fda897d6741031109ac5e9f451 -> origin/main
+2025-07-14T07:40:41.5682338Z ##[endgroup]
+2025-07-14T07:40:41.5684462Z ##[group]Determining the checkout info
+2025-07-14T07:40:41.5686227Z ##[endgroup]
+2025-07-14T07:40:41.5687438Z ##[group]Checking out the ref
+2025-07-14T07:40:41.5689060Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-07-14T07:40:41.5759991Z Switched to a new branch 'main'
+2025-07-14T07:40:41.5763053Z branch 'main' set up to track 'origin/main'.
+2025-07-14T07:40:41.5771624Z ##[endgroup]
+2025-07-14T07:40:41.5815296Z [command]/usr/bin/git log -1 --format='%H'
+2025-07-14T07:40:41.5838380Z 'b81650800e4879fda897d6741031109ac5e9f451'
+2025-07-14T07:40:41.6116335Z ##[group]Run actions/setup-node@v3
+2025-07-14T07:40:41.6117445Z with:
+2025-07-14T07:40:41.6118270Z   node-version: 20
+2025-07-14T07:40:41.6119104Z   always-auth: false
+2025-07-14T07:40:41.6119920Z   check-latest: false
+2025-07-14T07:40:41.6121083Z   token: ***
+2025-07-14T07:40:41.6122055Z ##[endgroup]
+2025-07-14T07:40:41.8039837Z Found in cache @ /opt/hostedtoolcache/node/20.19.3/x64
+2025-07-14T07:40:41.8045894Z ##[group]Environment details
+2025-07-14T07:40:42.1043291Z node: v20.19.3
+2025-07-14T07:40:42.1044687Z npm: 10.8.2
+2025-07-14T07:40:42.1046728Z yarn: 1.22.22
+2025-07-14T07:40:42.1050502Z ##[endgroup]
+2025-07-14T07:40:42.1164620Z ##[group]Run npm install
+2025-07-14T07:40:42.1165379Z [36;1mnpm install[0m
+2025-07-14T07:40:42.1200919Z shell: /usr/bin/bash -e {0}
+2025-07-14T07:40:42.1201950Z ##[endgroup]
+2025-07-14T07:40:43.1433519Z npm warn ERESOLVE overriding peer dependency
+2025-07-14T07:40:43.1434364Z npm warn While resolving: react-lazy-images@1.1.0
+2025-07-14T07:40:43.1435019Z npm warn Found: react@18.3.1
+2025-07-14T07:40:43.1435493Z npm warn node_modules/react
+2025-07-14T07:40:43.1436005Z npm warn   react@"^18" from the root project
+2025-07-14T07:40:43.1436788Z npm warn   9 more (@matejmazur/react-katex, next, react-dom, ...)
+2025-07-14T07:40:43.1437277Z npm warn
+2025-07-14T07:40:43.1437687Z npm warn Could not resolve dependency:
+2025-07-14T07:40:43.1438354Z npm warn peer react@"^15 || ^16" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.1439020Z npm warn node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:43.1439921Z npm warn   react-lazy-images@"^1.1.0" from react-notion-x@7.4.2
+2025-07-14T07:40:43.1440470Z npm warn   node_modules/react-notion-x
+2025-07-14T07:40:43.1440934Z npm warn
+2025-07-14T07:40:43.1441759Z npm warn Conflicting peer dependency: react@16.14.0
+2025-07-14T07:40:43.1442320Z npm warn node_modules/react
+2025-07-14T07:40:43.1442881Z npm warn   peer react@"^15 || ^16" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.1443659Z npm warn   node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:43.1444309Z npm warn     react-lazy-images@"^1.1.0" from react-notion-x@7.4.2
+2025-07-14T07:40:43.1444888Z npm warn     node_modules/react-notion-x
+2025-07-14T07:40:43.1452363Z npm warn ERESOLVE overriding peer dependency
+2025-07-14T07:40:43.1453322Z npm warn While resolving: react-lazy-images@1.1.0
+2025-07-14T07:40:43.1454055Z npm warn Found: react-dom@18.3.1
+2025-07-14T07:40:43.1454673Z npm warn node_modules/react-dom
+2025-07-14T07:40:43.1455167Z npm warn   react-dom@"^18" from the root project
+2025-07-14T07:40:43.1455859Z npm warn   6 more (next, react-hotkeys-hook, react-image, react-modal, ...)
+2025-07-14T07:40:43.1456499Z npm warn
+2025-07-14T07:40:43.1456919Z npm warn Could not resolve dependency:
+2025-07-14T07:40:43.1457573Z npm warn peer react-dom@"^15 || ^16" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.1458319Z npm warn node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:43.1459079Z npm warn   react-lazy-images@"^1.1.0" from react-notion-x@7.4.2
+2025-07-14T07:40:43.1459670Z npm warn   node_modules/react-notion-x
+2025-07-14T07:40:43.1460457Z npm warn
+2025-07-14T07:40:43.1461006Z npm warn Conflicting peer dependency: react-dom@16.14.0
+2025-07-14T07:40:43.1461788Z npm warn node_modules/react-dom
+2025-07-14T07:40:43.1462411Z npm warn   peer react-dom@"^15 || ^16" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.1463250Z npm warn   node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:43.1464232Z npm warn     react-lazy-images@"^1.1.0" from react-notion-x@7.4.2
+2025-07-14T07:40:43.1465184Z npm warn     node_modules/react-notion-x
+2025-07-14T07:40:43.2142488Z npm warn ERESOLVE overriding peer dependency
+2025-07-14T07:40:43.2143837Z npm warn While resolving: react-intersection-observer@6.4.2
+2025-07-14T07:40:43.2144667Z npm warn Found: react@18.3.1
+2025-07-14T07:40:43.2145426Z npm warn node_modules/react
+2025-07-14T07:40:43.2146151Z npm warn   react@"^18" from the root project
+2025-07-14T07:40:43.2146947Z npm warn   9 more (@matejmazur/react-katex, next, react-dom, ...)
+2025-07-14T07:40:43.2218550Z npm warn
+2025-07-14T07:40:43.2219271Z npm warn Could not resolve dependency:
+2025-07-14T07:40:43.2220411Z npm warn peer react@"^15.0.0 || ^16.0.0 || ^17.0.0" from react-intersection-observer@6.4.2
+2025-07-14T07:40:43.2222261Z npm warn node_modules/react-notion-x/node_modules/react-lazy-images/node_modules/react-intersection-observer
+2025-07-14T07:40:43.2223700Z npm warn   react-intersection-observer@"^6.1.0" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.2225363Z npm warn   node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:43.2226161Z npm warn
+2025-07-14T07:40:43.2226801Z npm warn Conflicting peer dependency: react@17.0.2
+2025-07-14T07:40:43.2227502Z npm warn node_modules/react
+2025-07-14T07:40:43.2228464Z npm warn   peer react@"^15.0.0 || ^16.0.0 || ^17.0.0" from react-intersection-observer@6.4.2
+2025-07-14T07:40:43.2229391Z npm warn   node_modules/react-notion-x/node_modules/react-lazy-images/node_modules/react-intersection-observer
+2025-07-14T07:40:43.2230299Z npm warn     react-intersection-observer@"^6.1.0" from react-lazy-images@1.1.0
+2025-07-14T07:40:43.2230972Z npm warn     node_modules/react-notion-x/node_modules/react-lazy-images
+2025-07-14T07:40:44.6303374Z npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+2025-07-14T07:40:45.1451871Z npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+2025-07-14T07:40:45.8269977Z npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+2025-07-14T07:40:45.8442339Z npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+2025-07-14T07:40:45.9128817Z npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+2025-07-14T07:40:47.2972851Z npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2025-07-14T07:40:53.2967494Z 
+2025-07-14T07:40:53.2968275Z added 409 packages, and audited 410 packages in 11s
+2025-07-14T07:40:53.2968880Z 
+2025-07-14T07:40:53.2969216Z 159 packages are looking for funding
+2025-07-14T07:40:53.2970074Z   run `npm fund` for details
+2025-07-14T07:40:53.3458692Z 
+2025-07-14T07:40:53.3459249Z 1 critical severity vulnerability
+2025-07-14T07:40:53.3459645Z 
+2025-07-14T07:40:53.3460026Z To address all issues, run:
+2025-07-14T07:40:53.3767813Z   npm audit fix --force
+2025-07-14T07:40:53.3768119Z 
+2025-07-14T07:40:53.3768286Z Run `npm audit` for details.
+2025-07-14T07:40:53.3821070Z ##[group]Run npm run build
+2025-07-14T07:40:53.3821816Z [36;1mnpm run build[0m
+2025-07-14T07:40:53.3852527Z shell: /usr/bin/bash -e {0}
+2025-07-14T07:40:53.3852773Z env:
+2025-07-14T07:40:53.3852938Z   NOTION_TOKEN: 
+2025-07-14T07:40:53.3853129Z   NOTION_DATABASE_ID: 
+2025-07-14T07:40:53.3853319Z ##[endgroup]
+2025-07-14T07:40:53.4928706Z 
+2025-07-14T07:40:53.4929667Z > my-notion-site@0.1.0 build
+2025-07-14T07:40:53.4930137Z > next build
+2025-07-14T07:40:53.4930283Z 
+2025-07-14T07:40:53.9959751Z ⚠ No build cache found. Please configure build caching for faster rebuilds. Read more: https://nextjs.org/docs/messages/no-cache
+2025-07-14T07:40:54.0055800Z Attention: Next.js now collects completely anonymous telemetry regarding usage.
+2025-07-14T07:40:54.0057119Z This information is used to shape Next.js' roadmap and prioritize features.
+2025-07-14T07:40:54.0058784Z You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+2025-07-14T07:40:54.0059963Z https://nextjs.org/telemetry
+2025-07-14T07:40:54.0060355Z 
+2025-07-14T07:40:54.0593362Z   ▲ Next.js 14.2.3
+2025-07-14T07:40:54.0593789Z 
+2025-07-14T07:40:54.1242257Z    Creating an optimized production build ...
+2025-07-14T07:41:02.9602732Z  ✓ Compiled successfully
+2025-07-14T07:41:02.9610106Z    Linting and checking validity of types ...
+2025-07-14T07:41:04.9412833Z Failed to compile.
+2025-07-14T07:41:04.9414072Z 
+2025-07-14T07:41:04.9414657Z ./lib/notion.ts:17:5
+2025-07-14T07:41:04.9415303Z Type error: Type 'string | undefined' is not assignable to type 'string'.
+2025-07-14T07:41:04.9416005Z   Type 'undefined' is not assignable to type 'string'.
+2025-07-14T07:41:04.9416344Z 
+2025-07-14T07:41:04.9417214Z [0m [90m 15 |[39m [36mexport[39m [36masync[39m [36mfunction[39m getDatabasePages() {[0m
+2025-07-14T07:41:04.9418496Z [0m [90m 16 |[39m   [36mconst[39m response [33m=[39m [36mawait[39m notion[33m.[39mdatabases[33m.[39mquery({[0m
+2025-07-14T07:41:04.9419793Z [0m[31m[1m>[22m[39m[90m 17 |[39m     database_id[33m:[39m [33mDATABASE_ID[39m[33m,[39m[0m
+2025-07-14T07:41:04.9420830Z [0m [90m    |[39m     [31m[1m^[22m[39m[0m
+2025-07-14T07:41:04.9421878Z [0m [90m 18 |[39m     [90m// ここでフィルターやソートを追加することも可能[39m[0m
+2025-07-14T07:41:04.9422513Z [0m [90m 19 |[39m     [90m// filter: {[39m[0m
+2025-07-14T07:41:04.9423160Z [0m [90m 20 |[39m     [90m//   property: 'Published',[39m[0m
+2025-07-14T07:41:04.9786535Z ##[error]Process completed with exit code 1.
+2025-07-14T07:41:04.9879404Z Post job cleanup.
+2025-07-14T07:41:05.0596186Z [command]/usr/bin/git version
+2025-07-14T07:41:05.0630209Z git version 2.50.1
+2025-07-14T07:41:05.0674564Z Temporarily overriding HOME='/home/runner/work/_temp/a87d542b-ba4c-4932-b962-8d29fec7880c' before making global git config changes
+2025-07-14T07:41:05.0675892Z Adding repository directory to the temporary git global config as a safe directory
+2025-07-14T07:41:05.0678477Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/my-notion-site/my-notion-site
+2025-07-14T07:41:05.0710175Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-07-14T07:41:05.0739315Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-07-14T07:41:05.0963314Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-07-14T07:41:05.0983441Z http.https://github.com/.extraheader
+2025-07-14T07:41:05.0994943Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-07-14T07:41:05.1024598Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-07-14T07:41:05.1354751Z Cleaning up orphan processes
