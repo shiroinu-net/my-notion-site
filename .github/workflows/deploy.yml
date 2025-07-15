@@ -3,13 +3,15 @@ name: Deploy Next.js site to GitHub Pages # ワークフロー名をより具体
 
 on:
   push:
-    branches: ["main"] # mainブランチへのプッシュでワークフローをトリガー
-  workflow_dispatch: # GitHub ActionsのWeb UIから手動で実行できるようにする
+    branches: ["main"]
+  workflow_dispatch: # 手動実行用
+  repository_dispatch: # ★この行を追加★
+    types: [deploy_from_notion] # ★この行を追加★ Makeで設定した event_type と一致させる
 
 permissions:
-  contents: read   # リポジトリの内容を読み取る権限
-  pages: write     # GitHub Pagesにデプロイする権限（★追加/確認★）
-  id-token: write  # OpenID Connect (OIDC) を使用するための権限（Secrets利用に必要）（★追加/確認★）
+  contents: read # リポジトリの内容を読み取る権限
+  pages: write # GitHub Pagesにデプロイする権限（★追加/確認★）
+  id-token: write # OpenID Connect (OIDC) を使用するための権限（Secrets利用に必要）（★追加/確認★）
 
 concurrency:
   group: "pages"
@@ -27,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4 # ★v3からv4に更新。最新のアクションを使用★
         with:
           node-version: "20" # Node.jsのバージョンを指定（安定版のLTS 20を推奨）
-          cache: "npm"       # npmキャッシュを有効にしてビルド時間を短縮
+          cache: "npm" # npmキャッシュを有効にしてビルド時間を短縮
 
       - name: Install dependencies
         run: npm install
