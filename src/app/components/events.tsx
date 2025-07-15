@@ -9,7 +9,7 @@
 
       return (
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
-          <h1 className="text-4xl font-bold mb-8">Notion Powered Site</h1>
+          <h2 className="text-4xl font-bold mb-8">Events</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pages.map((page) => {
@@ -29,7 +29,7 @@
 
               return (
                 <Link key={page.id} href={`/posts/${page.id}`} className="block p-6 border rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <h2 className="text-2xl font-semibold mb-2">{title}</h2>
+                  <h3 className="text-2xl font-semibold mb-2">{title}</h3>
                   <p className="text-gray-600">{description}</p>
                   {/* その他のプロパティを表示することも可能 */}
                 </Link>
