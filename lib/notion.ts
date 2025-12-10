@@ -22,12 +22,12 @@ export async function getDatabasePages() {
     //     equals: true,
     //   },
     // },
-    // sorts: [
-    //   {
-    //     property: 'Date',
-    //     direction: 'descending',
-    //   },
-    // ],
+    sorts: [
+      {
+        property: 'Date',
+        direction: 'descending',
+      },
+    ],
   });
   // ページオブジェクトのみをフィルタリング (型安全のため)
   return response.results.filter((page): page is PageObjectResponse => 'properties' in page);

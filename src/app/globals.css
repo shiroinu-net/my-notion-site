@@ -3,14 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--bg-pale-gray);
+  --foreground: var(--main-charcoal);
+
+  /* Color System */
+  --main-charcoal: #2C2C2C;
+  --main-white: #FFFFFF;
+  --bg-pale-gray: #E8E8E3;
+  --accent-deep-green: #2F4538;
+  --accent-moss: #7A8B6C;
+  --accent-ice-blue: #B8D4D9;
+  --accent-pale-aqua: #BAFFEE;
+  --accent-lemon-yellow: #FDFFBA;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Using same color system for now as per request */
+    --background: var(--bg-pale-gray);
+    --foreground: var(--main-charcoal);
   }
 }
 
