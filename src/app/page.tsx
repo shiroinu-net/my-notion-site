@@ -1,7 +1,7 @@
 import Hero from './components/hero';
 import Profile from './components/profile';
 import Events from './components/events';
-import Music from './components/music';
+import Works from './components/works';
 import Contact from './components/contact';
 
 export default function Home() {
@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <Profile />
       <Events />
-      <Music />
+      <Works />
       <Contact />
     </main>
   );

@@ -9,7 +9,20 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main-charcoal': 'var(--main-charcoal)',
+        'main-white': 'var(--main-white)',
+        'bg-pale-gray': 'var(--bg-pale-gray)',
+        accent: {
+          'deep-green': 'var(--accent-deep-green)',
+          'moss': 'var(--accent-moss)',
+          'ice-blue': 'var(--accent-ice-blue)',
+          'pale-aqua': 'var(--accent-pale-aqua)',
+          'lemon-yellow': 'var(--accent-lemon-yellow)',
+        },
+      },
+    },
   },
   plugins: [],
 }
