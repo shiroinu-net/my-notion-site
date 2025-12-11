@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import WaterBackground from "./components/WaterBackground";
+import Header from "./components/header";
 
 
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <WaterBackground />
+        <Header />
         {children}
       </body>
     </html>
