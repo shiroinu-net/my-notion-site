@@ -11,8 +11,8 @@ export default function WaterBackground() {
     if (!containerRef.current) return;
 
     // --- Configuration ---
-    const WIDTH = 128; // Texture width for simulation
-    const BOUNDS = 512;
+    const WIDTH = 256; // Texture width for simulation
+    const BOUNDS = 1024;
     // const BOUNDS_HALF = BOUNDS * 0.5;
 
     let dropSize = 20.0;
