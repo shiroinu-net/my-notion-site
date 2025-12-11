@@ -181,6 +181,7 @@ export default function WaterBackground() {
       container.appendChild( renderer.domElement );
 
       window.addEventListener( 'pointermove', onPointerMove );
+      window.addEventListener( 'pointerdown', onPointerMove ); // Add support for taps/clicks
       window.addEventListener( 'resize', onWindowResize );
 
       // No texture loading needed
@@ -334,6 +335,7 @@ export default function WaterBackground() {
         if (animationId) cancelAnimationFrame(animationId);
         if (timeoutId) clearTimeout(timeoutId);
         window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerdown', onPointerMove);
         window.removeEventListener('resize', onWindowResize);
         if (container && renderer) {
             container.removeChild(renderer.domElement);
