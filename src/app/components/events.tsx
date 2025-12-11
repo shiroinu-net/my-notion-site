@@ -5,7 +5,7 @@
     export const revalidate = 60; // 60秒ごとにISRでデータを再取得 (ビルドは静的だが、データは更新可能)
 
     export default async function Events() {
-      const pages = await getDatabasePages(); // Notionデータベースのページを取得
+      const pages = await getDatabasePages(5); // Notionデータベースのページを取得 (最新5件)
 
       return (
         <section id="events" className="flex flex-col items-center py-24 px-4 bg-white">
@@ -60,9 +60,8 @@
                   )}
                   <h3 className="text-xl font-bold mb-3 text-gray-900">{title}</h3>
                   <p className="text-gray-600 line-clamp-3 text-sm">{description}</p>
-                  {/* Read more button style */}
                   <div className="mt-auto pt-4 text-blue-600 text-sm font-medium flex items-center">
-                    Read more <span className="ml-1">→</span>
+                    <span className="ml-1">→</span>
                   </div>
                 </Link>
               );

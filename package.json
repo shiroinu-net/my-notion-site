@@ -10,12 +10,17 @@
   },
   "dependencies": {
     "@notionhq/client": "^4.0.1",
+    "@types/p5": "^1.7.7",
+    "@types/three": "^0.182.0",
     "highlight.js": "^11.11.1",
     "next": "14.2.3",
+    "p5": "^2.1.1",
     "prismjs": "^1.30.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-notion-x": "^7.4.2"
+    "react-notion-x": "^7.4.2",
+    "three": "^0.182.0",
+    "three-stdlib": "^2.36.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
