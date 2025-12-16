@@ -85,7 +85,30 @@ export default function PostRenderer({ blocks }: Props) {
         );
       case 'image':
          // Basic image support (external or file)
-         const src = block.image.type === 'external' ? block.image.external.url : block.image.file.url;
+         let src = '';
+         if (block.image.type === 'external') {
+           src = block.image.external.url;
+         } else {
+             // For file type, use local image if available (downloaded by script)
+             // Logic must match scripts/fetch-images.mjs naming convention
+             const originalUrl = block.image.file.url;
+             try {
+                const urlObj = new URL(originalUrl);
+                const pathname = urlObj.pathname;
+                const lastDotIndex = pathname.lastIndexOf('.');
+                const ext = lastDotIndex !== -1 ? pathname.substring(lastDotIndex) : '.jpg';
+                const filename = `${block.id}${ext}`;
+                
+                // Determine base path based on environment
+                // production build on GitHub Pages uses /my-notion-site
+                const basePath = process.env.NODE_ENV === 'production' ? '/my-notion-site' : '';
+                src = `${basePath}/notion-images/${filename}`;
+             } catch (e) {
+                 // Fallback to original URL if parsing fails (though likely to expire)
+                 src = originalUrl;
+             }
+         }
+
          const caption = block.image.caption?.length ? <div className="text-center text-sm text-gray-500 mt-1"><RichText text={block.image.caption} /></div> : null;
          return (
             <figure className="mb-6">
