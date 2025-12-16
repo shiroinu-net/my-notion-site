@@ -23,6 +23,7 @@
     "react-dom": "^18",
     "react-notion-x": "^7.4.2",
     "sass": "^1.96.0",
+    "sharp": "^0.34.5",
     "three": "^0.182.0",
     "three-stdlib": "^2.36.1"
   },
