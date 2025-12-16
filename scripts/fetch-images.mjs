@@ -4,6 +4,7 @@ import path from 'path';
 import https from 'https';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 // Load environment variables
 dotenv.config({ path: '.env.local' });
@@ -24,21 +25,37 @@ if (!fs.existsSync(PUBLIC_DIR)) {
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
 }
 
-async function downloadImage(url, filepath) {
+async function downloadAndOptimizeImage(url, filepath) {
     return new Promise((resolve, reject) => {
-        const file = fs.createWriteStream(filepath);
         https.get(url, (response) => {
             if (response.statusCode !== 200) {
                  reject(new Error(`Failed to download: ${response.statusCode}`));
                  return;
             }
-            response.pipe(file);
-            file.on('finish', () => {
-                file.close();
+
+            const transformer = sharp()
+                .resize({ width: 1200, withoutEnlargement: true })
+                .webp({ quality: 80 });
+
+            const fileStream = fs.createWriteStream(filepath);
+
+            response.pipe(transformer).pipe(fileStream);
+
+            fileStream.on('finish', () => {
                 resolve();
             });
+
+            fileStream.on('error', (err) => {
+                fs.unlink(filepath, () => {});
+                reject(err);
+            });
+            
+            transformer.on('error', (err) => {
+                 console.error('Sharp transformation error:', err);
+                 reject(err);
+            });
+
         }).on('error', (err) => {
-            fs.unlink(filepath, () => {});
             reject(err);
         });
     });
@@ -68,36 +85,21 @@ async function main() {
           if (block.type === 'image' && block.image.type === 'file') {
               const url = block.image.file.url;
               const blockId = block.id;
-              // Extract extension from URL (usually after ? before access params, but signed aws urls are messy)
-              // Actually Notion file urls usually contain filename at the end of path before params.
-              // Let's rely on parsing the URL path.
-              const urlObj = new URL(url);
-              const pathname = urlObj.pathname;
-              const ext = path.extname(pathname) || '.jpg'; // Fallback
               
-              const filename = `${blockId}${ext}`;
+              // Always save as webp
+              const filename = `${blockId}.webp`;
               const filepath = path.join(PUBLIC_DIR, filename);
 
-              // Check if already exists (optional: check if newer? Notion URLs change when expired so hard to rely on URL for caching unless we save metadata. 
-              // Simplest for now: if file exists, skip. But wait, signed URLs expire, but the image content doesn't change for the same block ID usually unless updated.
-              // Block ID is unique. If user updates image in Notion, does Block ID change? 
-              // Usually replacing an image in Notion updates the block content. The ID might persist or change.
-              // To be safe for updates, we might want to redownload if we can't be sure.
-              // But for build speed, let's skip if exists. 
-              // User said "deployed site", so local build is fresh or user can clear folder if needed.
-              // Actually, since this is for "remote site" (vercel probably), the build env might be ephemeral anyway, so it will always download.
-              // locally, we might want to skip to avoid spamming downloads.
-              
               if (fs.existsSync(filepath)) {
                   console.log(`Skipping existing image: ${filename}`);
                   continue;
               }
 
-              console.log(`Downloading image: ${filename}`);
+              console.log(`Downloading and optimizing image: ${filename}`);
               try {
-                  await downloadImage(url, filepath);
+                  await downloadAndOptimizeImage(url, filepath);
               } catch (e) {
-                  console.error(`Failed to download ${filename}:`, e);
+                  console.error(`Failed to process ${filename}:`, e);
               }
           }
       }
