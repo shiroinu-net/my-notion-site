@@ -8,10 +8,10 @@
       const pages = await getDatabasePages(5); // Notionデータベースのページを取得 (最新5件)
 
       return (
-        <section id="events" className="flex flex-col items-center py-24 px-4 bg-white">
+        <section id="events" className="flex flex-col items-center py-24 px-4">
           <h2 className="text-4xl font-bold mb-12 text-gray-900">Events</h2>
 
-          <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="section-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {pages.map((page) => {
               // Notionデータベースのプロパティ名に合わせて調整してください
               const titleProperty = page.properties.Title;
