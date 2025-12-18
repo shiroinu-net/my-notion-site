@@ -1,6 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer components {
+  .section-content {
+    @apply mx-auto max-w-[920px] px-4;
+  }
+}
+
+
 
 :root {
   --background: var(--bg-pale-gray);
