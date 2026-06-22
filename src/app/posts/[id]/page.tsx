@@ -29,6 +29,22 @@ const getTextFromProp = (page: any, propName: string, type: 'rich_text' | 'title
   return '';
 };
 
+// 日付フォーマット関数
+const formatDate = (dateString: string) => {
+  if (!dateString) return '';
+  
+  // 日付と時刻が含まれている場合 (YYYY-MM-DDTHH:mm:ss 形式)
+  if (dateString.includes('T')) {
+    const [datePart, timePart] = dateString.split('T');
+    const formattedDate = datePart.replace(/-/g, '/');
+    const formattedTime = timePart.substring(0, 5); // HH:mm のみ取得
+    return `${formattedDate} ${formattedTime}`;
+  }
+  
+  // 日付のみの場合 (YYYY-MM-DD 形式)
+  return dateString.replace(/-/g, '/');
+};
+
 // 汎用プロパティレンダラー
 const renderPropertyValue = (property: any) => {
   switch (property.type) {
@@ -51,7 +67,9 @@ const renderPropertyValue = (property: any) => {
     case 'date':
       if (!property.date) return '-';
       const { start, end } = property.date;
-      return end ? `${start} → ${end}` : start;
+      const startFmt = formatDate(start);
+      const endFmt = end ? formatDate(end) : null;
+      return endFmt ? `${startFmt} → ${endFmt}` : startFmt;
     case 'checkbox':
       return (
         <label className="inline-flex items-center">
@@ -165,9 +183,19 @@ export default async function PostPage({ params }: { params: { id: string } }) {
   const mapQuery = addressText || placeText;
   const mapUrl = mapQuery ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}` : null;
 
+  // 日付プロパティの取得
+  const dateProperty = currentPage.properties.Date;
+  let dateStr = '';
+  if (dateProperty && 'date' in dateProperty && dateProperty.date) {
+    const { start, end } = dateProperty.date;
+    const startFmt = formatDate(start);
+    const endFmt = end ? formatDate(end) : null;
+    dateStr = endFmt ? `${startFmt} → ${endFmt}` : startFmt;
+  }
+
   // Headerで個別表示したため表示除外するキー
-  // ※ Status, Place, Address, Title はヘッダーでリッチに表示済み
-  const handledKeys = ['Title', 'Status', 'Place', 'Address', 'check']; 
+  // ※ Status, Place, Address, Date, Title はヘッダーでリッチに表示済み
+  const handledKeys = ['Title', 'Status', 'Place', 'Address', 'Date', 'check']; 
 
   return (
     <div className="min-h-screen bg-white text-gray-900 pb-20">
@@ -191,13 +219,21 @@ export default async function PostPage({ params }: { params: { id: string } }) {
           )}
 
           {/* Title */}
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-gray-900 leading-tight">
             {title}
           </h1>
 
+          {/* 日付表示 */}
+          {dateStr && (
+            <div className="flex items-center text-gray-600 mb-4">
+              <span className="mr-2">🗓</span>
+              <span className="text-lg font-medium">{dateStr}</span>
+            </div>
+          )}
+
           {/* Meta Info (Place & Address) */}
           {(placeText || addressText) && (
-            <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-600 mt-4 space-y-1 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row sm:items-center text-sm text-gray-600 space-y-1 sm:space-y-0 sm:space-x-4">
               {placeText && (
                 <div className="flex items-center">
                   <span className="mr-2">📍</span>
@@ -227,21 +263,35 @@ export default async function PostPage({ params }: { params: { id: string } }) {
         </header>
 
         {/* その他のプロパティ情報 */}
-        <div className="mb-10 p-6 bg-gray-50 rounded-xl border border-gray-100">
-          <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Details</h3>
-          <div className="space-y-3">
-            {Object.entries(currentPage.properties)
-              .filter(([key]) => !handledKeys.includes(key)) // すでに表示したキーを除外
-              .map(([key, value]) => (
-                <div key={key} className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-sm border-b border-gray-100 last:border-0 pb-2 last:pb-0">
-                  <div className="font-medium text-gray-500">{key}</div>
-                  <div className="col-span-2 text-gray-800 break-words font-mono sm:font-sans">
-                    {renderPropertyValue(value)}
+        {(() => {
+          // 空でないプロパティのみをフィルタリング
+          const visibleProperties = Object.entries(currentPage.properties)
+            .filter(([key]) => !handledKeys.includes(key)) // すでに表示したキーを除外
+            .filter(([_, value]) => {
+              // 空の値をチェック
+              const rendered = renderPropertyValue(value);
+              return rendered !== '-' && rendered !== '' && rendered !== null;
+            });
+
+          // プロパティが存在する場合のみ表示
+          if (visibleProperties.length === 0) return null;
+
+          return (
+            <div className="mb-10 p-6 bg-gray-50 rounded-xl border border-gray-100">
+              <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Details</h3>
+              <div className="space-y-3">
+                {visibleProperties.map(([key, value]) => (
+                  <div key={key} className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 text-sm border-b border-gray-100 last:border-0 pb-3 last:pb-0">
+                    <div className="font-semibold text-gray-600">{key}</div>
+                    <div className="col-span-2 text-gray-800 break-words">
+                      {renderPropertyValue(value)}
+                    </div>
                   </div>
-                </div>
-              ))}
-          </div>
-        </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* コンテンツエリア */}
         <div className="prose prose-lg max-w-none prose-headings:font-bold prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 hover:prose-a:text-blue-800 prose-img:rounded-xl">
