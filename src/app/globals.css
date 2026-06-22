@@ -1,48 +1,49 @@
 @import "tailwindcss";
 
-@layer components {
-  .section-content {
-    @apply mx-auto max-w-[920px] px-4;
-  }
-}
-
-
-
 :root {
-  --background: var(--bg-pale-gray);
-  --foreground: var(--main-charcoal);
+  --rs-fog:    #EBEDEF;
+  --rs-ink:    #262A30;
+  --rs-slate1: #3A4654;
+  --rs-slate2: #5A6573;
+  --rs-slate3: #6E869B;
+  --rs-slate4: #9FB2C2;
+  --rs-lilac:  #B6AECB;
+  --rs-rose:   #D3A9B0;
+  --rs-violet: #837AA0;
 
-  /* Color System */
-  --main-charcoal: #2C2C2C;
-  --main-white: #FFFFFF;
-  --bg-pale-gray: #E8E8E3;
-  --accent-deep-green: #2F4538;
-  --accent-moss: #7A8B6C;
-  --accent-ice-blue: #B8D4D9;
-  --accent-pale-aqua: #BAFFEE;
-  --accent-lemon-yellow: #FDFFBA;
+  --background: var(--rs-fog);
+  --foreground: var(--rs-ink);
+  --main-charcoal: #262A30;
+  --main-white: #EBEDEF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Using same color system for now as per request */
-    --background: var(--bg-pale-gray);
-    --foreground: var(--main-charcoal);
-  }
+@keyframes rs-twinkle {
+  0%, 100% { opacity: .25; transform: scale(.85); }
+  50%       { opacity: .9;  transform: scale(1); }
 }
 
-html,
-body {
+@keyframes rs-fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
+}
+
+html {
+  scroll-behavior: smooth;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--rs-fog);
+  color: var(--rs-ink);
+  font-family: 'Noto Sans JP', sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--rs-lilac);
+  color: var(--rs-fog);
 }
 
 * {
@@ -56,8 +57,13 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.1s ease, transform 1.1s ease;
+}
+
+[data-reveal].rs-visible {
+  opacity: 1;
+  transform: none;
 }

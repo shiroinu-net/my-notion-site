@@ -162,7 +162,7 @@ export default function WaterBackground() {
       camera.lookAt( 0, 0, 0 );
 
       scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xE8E8E3); // Matches --bg-pale-gray
+      scene.background = new THREE.Color(0xEBEDEF);
 
       const sun = new THREE.DirectionalLight( 0xFFFFFF, 3.0 ); 
       sun.position.set( 200, 300, 175 );
@@ -201,7 +201,7 @@ export default function WaterBackground() {
     }
 
     function initWater() {
-      const materialColor = 0xE8E8E3; // Matches --bg-pale-gray
+      const materialColor = 0xEBEDEF;
 
       const geometry = new THREE.PlaneGeometry( BOUNDS, BOUNDS, WIDTH - 1, WIDTH - 1 );
 
