@@ -59,14 +59,58 @@
   color: var(--rs-violet);
 }
 
-/* 中央：本文 */
-.leadLine {
-  margin: 0 0 22px;
-  font-family: "Noto Serif JP", serif;
-  font-weight: 400;
-  font-size: clamp(19px, 2.2vw, 24px);
-  line-height: 1.7;
+/* 上部：名前ブロック（Rishao ＋ ふりがな） */
+.nameBlock {
+  margin: 0 0 26px;
+}
+
+.name {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 46px);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
   color: var(--rs-ink);
+}
+
+/* ふりがな（名前直下） */
+.igName {
+  display: block;
+  margin: 4px 0 0;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--rs-slate3);
+}
+
+/* 下部：インスタへのリンク */
+.igLink {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  margin: 6px 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(18px, 1.9vw, 22px);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+  color: var(--rs-ink);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.igLink:hover {
+  color: var(--rs-violet);
+}
+
+.igLabel {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--rs-violet);
 }
 
 .body {
@@ -113,17 +157,6 @@
 
 .enBody:last-child {
   margin-bottom: 0;
-}
-
-.quote {
-  margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(18px, 2vw, 23px);
-  line-height: 1.5;
-  color: var(--rs-slate3);
-  max-width: min(40ch, 100%);
 }
 
 /* レスポンシブ：狭い画面でカラムを畳む */

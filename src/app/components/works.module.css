@@ -162,3 +162,153 @@
   z-index: 2;
   opacity: 0.5;
 }
+
+/* ── Releases / Works 一覧（Notion 駆動） ── */
+.archive {
+  margin-top: clamp(40px, 7vh, 80px);
+}
+
+.archiveHead {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.archiveLabel {
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rs-violet);
+  white-space: nowrap;
+}
+
+.archiveRule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--rs-slate4), transparent);
+  opacity: 0.5;
+}
+
+/* 一覧の各行 */
+.row {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: clamp(14px, 3vw, 32px);
+  padding: clamp(16px, 2.4vh, 22px) 4px;
+  border-top: 1px solid rgba(110, 134, 155, 0.28);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.25s ease;
+}
+
+.row:hover {
+  background: rgba(159, 178, 194, 0.08);
+}
+
+.row:last-of-type {
+  border-bottom: 1px solid rgba(110, 134, 155, 0.28);
+}
+
+/* サムネ（ジャケ） */
+.thumb {
+  width: 64px;
+  height: 64px;
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+.thumbPlaceholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(110, 134, 155, 0.3);
+  background: rgba(159, 178, 194, 0.14);
+}
+
+.rowMain {
+  min-width: 0;
+}
+
+.rowTitle {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--rs-ink);
+  line-height: 1.4;
+}
+
+.rowRomaji {
+  margin-top: 3px;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--rs-violet);
+}
+
+.rowMeta {
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--rs-slate3);
+  white-space: nowrap;
+}
+
+.rowArrow {
+  font-size: 18px;
+  color: var(--rs-slate3);
+}
+
+/* フッター（view all 導線） */
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 22px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  color: var(--rs-slate4);
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-style: normal;
+  letter-spacing: 0.18em;
+  color: var(--rs-violet);
+  text-decoration: none;
+  transition: gap 0.25s ease;
+}
+
+.viewAll:hover {
+  gap: 14px;
+}
+
+/* レスポンシブ：狭い画面ではメタを畳む */
+@media (max-width: 600px) {
+  .row {
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+  }
+
+  .thumb {
+    width: 52px;
+    height: 52px;
+  }
+
+  .rowMeta {
+    display: none;
+  }
+}

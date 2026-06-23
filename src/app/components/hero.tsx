@@ -26,11 +26,7 @@ export default function Hero() {
         <p className={s.leadEn}>
           a love for nameless phenomena, sung in cool, drifting electro&#8202;-&#8202;pop.
         </p>
-        <p className={s.leadJa}>
-          名を持たぬ現象への愛を、<br />
-          多文化的なエレクトロ・ポップに。<br />
-          名古屋を拠点に歌う。
-        </p>
+        
       </div>
 
       <div className={s.sparkleRight}>✦</div>

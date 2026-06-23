@@ -23,8 +23,8 @@ export default function Contact() {
         {/* 左：メール */}
         <div>
           <div className={s.kicker}>booking / mail</div>
-          <a href="mailto:contact@rishao.jp" className={s.mail}>
-            contact@rishao.jp
+          <a href="mailto:rishao.contact@gmail.com" className={s.mail}>
+            rishao.contact@gmail.com
           </a>
           <p className={s.note}>
             ライブ出演・楽曲提供などのご相談はメールにて。折り返しご連絡します。

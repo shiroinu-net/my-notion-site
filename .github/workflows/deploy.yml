@@ -39,6 +39,8 @@ jobs:
           # GitHubリポジトリのSecretsに登録したNotion APIの環境変数を渡す
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          # Works DB の ID は非機密（読むには NOTION_TOKEN が必要）なので直書き
+          NOTION_WORKS_DATABASE_ID: 388df413e252806ea729c1e2d1bd5a8f
         run: npm run build # Next.jsのビルドコマンドを実行
 
       # .nojekyll ファイルをビルド成果物ディレクトリ（out）に追加
