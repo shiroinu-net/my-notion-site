@@ -1,0 +1,164 @@
+/* セクション外枠（works は少し広め 1320 / 上下パディングも独自） */
+.section {
+  position: relative;
+  z-index: 5;
+  padding: clamp(40px, 7vh, 90px) clamp(24px, 5vw, 72px) clamp(70px, 12vh, 150px);
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* コラージュ全体の舞台 */
+.collage {
+  position: relative;
+  width: 100%;
+  height: clamp(520px, 72vh, 820px);
+}
+
+/* 中央の巨大な "uzu" 文字 */
+.bigWord {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bigWord span {
+  display: inline-block;
+  transform: scaleY(1.5);
+  transform-origin: center;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(80px, 18vw, 250px);
+  line-height: 0.8;
+  letter-spacing: 0.02em;
+  color: var(--rs-slate3);
+  opacity: 0.92;
+}
+
+/* ── 各フレームの配置 ── */
+.frameCircle {
+  position: absolute;
+  left: 2%;
+  top: 4%;
+  width: clamp(140px, 17vw, 230px);
+  z-index: 3;
+}
+
+.frameBlobTop {
+  position: absolute;
+  right: 1%;
+  top: 0;
+  width: clamp(220px, 30vw, 400px);
+  z-index: 1;
+}
+
+.framePill {
+  position: absolute;
+  left: 8%;
+  bottom: 2%;
+  width: clamp(280px, 46vw, 640px);
+  z-index: 3;
+}
+
+.frameBlobSmall {
+  position: absolute;
+  right: 6%;
+  bottom: 6%;
+  width: clamp(130px, 16vw, 210px);
+  z-index: 3;
+}
+
+/* ── フレームの中身（画像プレースホルダ） ── */
+.imgCircle {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  border: 1px solid rgba(110, 134, 155, 0.3);
+  background: rgba(159, 178, 194, 0.14);
+}
+
+.imgBlobTop {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 54% 46% 63% 37% / 42% 56% 44% 58%;
+  overflow: hidden;
+  box-shadow: 0 18px 50px -28px rgba(58, 70, 84, 0.5);
+  background: rgba(159, 178, 194, 0.14);
+}
+
+.imgPill {
+  width: 100%;
+  height: clamp(120px, 18vh, 180px);
+  border-radius: 9999px;
+  border: 1px solid rgba(110, 134, 155, 0.3);
+  background: rgba(159, 178, 194, 0.14);
+}
+
+.imgBlobSmall {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 46% 54% 38% 62% / 56% 41% 59% 44%;
+  overflow: hidden;
+  box-shadow: 0 16px 40px -26px rgba(58, 70, 84, 0.5);
+  background: rgba(159, 178, 194, 0.14);
+}
+
+/* ── キャプション ── */
+.caption {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--rs-slate1);
+  margin-top: 10px;
+  line-height: 1.3;
+}
+
+.captionRight {
+  font-size: 14px;
+  margin-top: 8px;
+  text-align: right;
+}
+
+.captionMeta {
+  font-family: "Space Mono", monospace;
+  font-style: normal;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--rs-slate4);
+}
+
+/* ── 装飾のキラキラ ── */
+.sparkle1 {
+  position: absolute;
+  left: 34%;
+  top: 8%;
+  font-size: 20px;
+  color: var(--rs-rose);
+  z-index: 4;
+  animation: rs-twinkle 5.5s ease-in-out infinite;
+}
+
+.sparkle2 {
+  position: absolute;
+  right: 30%;
+  bottom: 24%;
+  font-size: 15px;
+  color: var(--rs-lilac);
+  z-index: 4;
+  animation: rs-twinkle 7s ease-in-out infinite 1.2s;
+}
+
+/* 渦の SVG */
+.swirl {
+  position: absolute;
+  left: 24%;
+  bottom: 30%;
+  width: clamp(70px, 9vw, 120px);
+  height: clamp(70px, 9vw, 120px);
+  z-index: 2;
+  opacity: 0.5;
+}

@@ -1,0 +1,79 @@
+/* セクション外枠 */
+.section {
+  position: relative;
+  z-index: 5;
+  padding: clamp(64px, 11vh, 140px) clamp(24px, 5vw, 72px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* 1行のイベント（日付 / 内容 / 矢印） */
+.row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) auto;
+  gap: clamp(16px, 3vw, 40px);
+  align-items: center;
+  padding: clamp(20px, 3vh, 30px) 8px;
+  border-top: 1px solid rgba(110, 134, 155, 0.28);
+  text-decoration: none;
+  color: inherit;
+}
+
+.date {
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--rs-slate3);
+}
+
+.title {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 400;
+  font-size: clamp(17px, 2vw, 22px);
+  color: var(--rs-ink);
+  line-height: 1.4;
+}
+
+.place {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--rs-violet);
+  margin-top: 4px;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: var(--rs-slate3);
+}
+
+/* 一覧下のフッター行 */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(110, 134, 155, 0.28);
+  padding-top: 22px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--rs-slate4);
+  font-style: italic;
+}
+
+.viewAll {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-style: normal;
+  letter-spacing: 0.12em;
+  color: var(--rs-violet);
+}
+
+.viewAll span {
+  font-size: 14px;
+}

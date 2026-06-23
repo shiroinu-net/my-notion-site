@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { getDatabasePages, getRichTextContent } from '../../../lib/notion';
+import SectionHeader from './SectionHeader';
+import s from './events.module.css';
 
 export const revalidate = 60;
 
 export default async function Events() {
-  const pages = await getDatabasePages(5);
+  const pages = await getDatabasePages();
 
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
@@ -12,72 +14,32 @@ export default async function Events() {
     return `${y} · ${m} · ${d}`;
   };
 
+  // Date の文字列を取り出すヘルパー（無ければ空文字）
+  const getDateStr = (page: (typeof pages)[number]) => {
+    const dateProp = page.properties.Date;
+    if (dateProp && 'date' in dateProp && dateProp.date) return dateProp.date.start;
+    return '';
+  };
+
+  // check が false のものを除外 → 日付の新しい順に並べ替え → 最新5件だけ表示
+  const events = pages
+    .filter((page) => {
+      const checkProp = page.properties.check;
+      if (checkProp && 'checkbox' in checkProp && !checkProp.checkbox) return false;
+      return true;
+    })
+    .sort((a, b) => getDateStr(b).localeCompare(getDateStr(a)))
+    .slice(0, 5);
+
   return (
-    <section
-      id="events"
-      data-reveal
-      style={{
-        position: "relative",
-        zIndex: 5,
-        padding: "clamp(64px,11vh,140px) clamp(24px,5vw,72px)",
-        maxWidth: 1280,
-        margin: "0 auto",
-        boxSizing: "border-box",
-      }}
-    >
-      {/* Section header */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "baseline",
-          gap: 18,
-          marginBottom: "clamp(34px,6vh,64px)",
-        }}
-      >
-        <span style={{ fontSize: 16, color: "var(--rs-lilac)" }}>✦</span>
-        <h2
-          style={{
-            margin: 0,
-            fontFamily: "'Cormorant Garamond', serif",
-            fontWeight: 500,
-            fontStyle: "italic",
-            fontSize: "clamp(34px,5vw,58px)",
-            color: "var(--rs-ink)",
-            lineHeight: 1,
-          }}
-        >
-          Events
-        </h2>
-        <span
-          style={{
-            flex: 1,
-            height: 1,
-            background: "linear-gradient(to right, var(--rs-slate4), transparent)",
-            opacity: 0.5,
-            alignSelf: "center",
-            marginLeft: 8,
-          }}
-        />
-        <span
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: 11,
-            letterSpacing: ".2em",
-            color: "var(--rs-violet)",
-          }}
-        >
-          02 — live
-        </span>
-      </div>
+    <section id="events" data-reveal className={s.section}>
+      <SectionHeader title="Events" no="02" label="live" marginBottom="clamp(34px,6vh,64px)" />
 
       {/* Event list */}
-      {pages.map((page) => {
+      {events.map((page) => {
         const titleProp = page.properties.Title;
         const placeProp = page.properties.Place;
         const dateProp  = page.properties.Date;
-        const checkProp = page.properties.check;
-
-        if (checkProp && 'checkbox' in checkProp && !checkProp.checkbox) return null;
 
         const title = titleProp && 'title' in titleProp ? getRichTextContent(titleProp.title) : 'Untitled';
         const place = placeProp && 'rich_text' in placeProp ? getRichTextContent(placeProp.rich_text) : '';
@@ -88,84 +50,22 @@ export default async function Events() {
         }
 
         return (
-          <Link
-            key={page.id}
-            href={`/posts/${page.id}`}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "140px minmax(0,1fr) auto",
-              gap: "clamp(16px,3vw,40px)",
-              alignItems: "center",
-              padding: "clamp(20px,3vh,30px) 8px",
-              borderTop: "1px solid rgba(110,134,155,.28)",
-              textDecoration: "none",
-              color: "inherit",
-            }}
-          >
-            <div
-              style={{
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 13,
-                letterSpacing: ".04em",
-                color: "var(--rs-slate3)",
-              }}
-            >
-              {dateStr}
-            </div>
+          <Link key={page.id} href={`/events/${page.id}`} className={s.row}>
+            <div className={s.date}>{dateStr}</div>
             <div>
-              <div
-                style={{
-                  fontFamily: "'Noto Serif JP', serif",
-                  fontWeight: 400,
-                  fontSize: "clamp(17px,2vw,22px)",
-                  color: "var(--rs-ink)",
-                  lineHeight: 1.4,
-                }}
-              >
-                {title}
-              </div>
-              <div
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontStyle: "italic",
-                  fontSize: 16,
-                  color: "var(--rs-violet)",
-                  marginTop: 4,
-                }}
-              >
-                {place}
-              </div>
+              <div className={s.title}>{title}</div>
+              <div className={s.place}>{place}</div>
             </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 14,
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 11,
-                letterSpacing: ".12em",
-                color: "var(--rs-slate4)",
-              }}
-            >
-              <span style={{ fontSize: 18, color: "var(--rs-slate3)" }}>→</span>
-            </div>
+            <div className={s.arrow}>→</div>
           </Link>
         );
       })}
 
-      <div
-        style={{
-          borderTop: "1px solid rgba(110,134,155,.28)",
-          marginTop: 0,
-          paddingTop: 22,
-          fontFamily: "'Space Mono', monospace",
-          fontSize: 11,
-          letterSpacing: ".1em",
-          color: "var(--rs-slate4)",
-          fontStyle: "italic",
-        }}
-      >
-        — upcoming dates update automatically.
+      <div className={s.footer}>
+        <span>— upcoming dates update automatically.</span>
+        <Link href="/events" className={s.viewAll}>
+          view all <span>→</span>
+        </Link>
       </div>
     </section>
   );

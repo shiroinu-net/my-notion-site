@@ -1,0 +1,94 @@
+/* ファーストビュー全体 */
+.hero {
+  position: relative;
+  z-index: 5;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px clamp(24px, 5vw, 72px) 80px;
+}
+
+/* 上部のラベル（singer-songwriter — nagoya, jp） */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--rs-slate3);
+  margin-bottom: clamp(40px, 8vh, 90px);
+}
+
+.eyebrowStar {
+  color: var(--rs-lilac);
+  font-size: 15px;
+}
+
+.eyebrowLine {
+  width: 46px;
+  height: 1px;
+  background: var(--rs-slate4);
+  opacity: 0.6;
+  display: inline-block;
+}
+
+/* ロゴ */
+.logo {
+  display: block;
+  width: clamp(200px, 30vw, 480px);
+  height: auto;
+}
+
+/* ロゴ下の2つのリード文 */
+.leadRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: clamp(28px, 5vh, 60px);
+  max-width: 1180px;
+}
+
+.leadEn {
+  margin: 0;
+  max-width: 30ch;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(20px, 2.6vw, 30px);
+  line-height: 1.4;
+  color: var(--rs-slate1);
+}
+
+.leadJa {
+  margin: 0;
+  max-width: 24ch;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 2;
+  color: var(--rs-slate2);
+}
+
+/* 装飾のキラキラ */
+.sparkleRight {
+  position: absolute;
+  right: clamp(24px, 5vw, 72px);
+  top: 46%;
+  font-size: 24px;
+  color: var(--rs-lilac);
+  animation: rs-twinkle 5s ease-in-out infinite;
+}
+
+.sparkleLeft {
+  position: absolute;
+  left: 18%;
+  bottom: 14%;
+  font-size: 14px;
+  color: var(--rs-slate4);
+  animation: rs-twinkle 6.5s ease-in-out infinite 0.8s;
+}

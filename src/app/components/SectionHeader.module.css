@@ -1,0 +1,38 @@
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: clamp(40px, 7vh, 80px);
+}
+
+.star {
+  font-size: 16px;
+  color: var(--rs-lilac);
+}
+
+.title {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(34px, 5vw, 58px);
+  color: var(--rs-ink);
+  line-height: 1;
+}
+
+/* 見出しとラベルの間を埋めるグラデーションの罫線 */
+.line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--rs-slate4), transparent);
+  opacity: 0.5;
+  align-self: center;
+  margin-left: 8px;
+}
+
+.label {
+  font-family: "Space Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--rs-violet);
+}

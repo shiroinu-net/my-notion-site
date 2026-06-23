@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "rm -rf .next",
     "dev": "next dev",
     "prebuild": "node -r dotenv/config scripts/fetch-images.mjs",
     "build": "next build",
