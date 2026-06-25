@@ -25,6 +25,7 @@ export default function WaterBackground() {
     let renderer: THREE.WebGLRenderer;
     
     let mouseMoved = false;
+    let mouseHoldFrames = 0;
     const mouseCoords = new THREE.Vector2();
     const raycaster = new THREE.Raycaster();
 
@@ -288,6 +289,9 @@ export default function WaterBackground() {
     function onPointerMove( event: PointerEvent ) {
       if ( event.isPrimary === false ) return;
       setMouseCoords( event.clientX, event.clientY );
+      if ( event.pointerType === 'touch' && event.type === 'pointerdown' ) {
+        mouseHoldFrames = 14;
+      }
     }
 
     function animate() {
@@ -300,7 +304,7 @@ export default function WaterBackground() {
 
       // Set uniforms: mouse interaction
       const uniforms = heightmapVariable.material.uniforms;
-      if ( mouseMoved ) {
+      if ( mouseMoved || mouseHoldFrames > 0 ) {
         raycaster.setFromCamera( mouseCoords, camera );
         const intersects = raycaster.intersectObject( meshRay );
 
@@ -311,6 +315,7 @@ export default function WaterBackground() {
           uniforms[ 'mousePos' ].value.set( 10000, 10000 );
         }
         mouseMoved = false;
+        if ( mouseHoldFrames > 0 ) mouseHoldFrames--;
       } else {
         uniforms[ 'mousePos' ].value.set( 10000, 10000 );
       }
