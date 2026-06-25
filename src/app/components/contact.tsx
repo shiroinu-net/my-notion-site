@@ -27,7 +27,11 @@ export default function Contact() {
             rishao.contact@gmail.com
           </a>
           <p className={s.note}>
-            ライブ出演・楽曲提供などのご相談はメールにて。折り返しご連絡します。
+            For inquiries regarding live performances, collaborations,
+            and music production, feel free to reach out.
+            <span className={s.noteJa}>
+              ライブ出演・コラボレーション・制作などのご相談はこちらから。
+            </span>
           </p>
         </div>
 
@@ -51,7 +55,6 @@ export default function Contact() {
           <span>▸</span>
           <span>▸</span>
         </span>
-        <span>nagoya — nameless phenomena</span>
       </div>
     </section>
   );

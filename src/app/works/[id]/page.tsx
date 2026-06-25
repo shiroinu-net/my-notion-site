@@ -85,22 +85,30 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
         boxSizing: 'border-box',
       }}
     >
-      {/* 戻りリンク */}
-      <Link
-        href="/#works"
+      {/* パンくず */}
+      <nav
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 10,
+          gap: 8,
           fontFamily: "'Space Mono', monospace",
           fontSize: 11,
-          letterSpacing: '.18em',
-          color: 'var(--rs-slate3)',
+          letterSpacing: '.14em',
           marginBottom: 'clamp(40px,7vh,72px)',
         }}
       >
-        <span style={{ fontSize: 16 }}>←</span> back to works
-      </Link>
+        <span style={{ color: 'var(--rs-slate3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ fontSize: 16 }}>←</span>
+          <span>back to...</span>
+        </span>
+        <Link href="/" style={{ color: 'var(--rs-slate3)', textDecoration: 'none' }}>
+          Home
+        </Link>
+        <span style={{ color: 'var(--rs-slate4)' }}>/</span>
+        <Link href="/works" style={{ color: 'var(--rs-violet)', textDecoration: 'none' }}>
+          all works
+        </Link>
+      </nav>
 
       {/* 作品ヘッダー */}
       <header style={{ marginBottom: 'clamp(40px,7vh,72px)' }}>

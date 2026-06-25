@@ -120,22 +120,30 @@ export default async function EventPage({ params }: { params: { id: string } }) 
         boxSizing: 'border-box',
       }}
     >
-      {/* 戻りリンク */}
-      <Link
-        href="/#events"
+      {/* パンくず */}
+      <nav
         style={{
           display: 'inline-flex',
           alignItems: 'center',
-          gap: 10,
+          gap: 8,
           fontFamily: "'Space Mono', monospace",
           fontSize: 11,
-          letterSpacing: '.18em',
-          color: 'var(--rs-slate3)',
+          letterSpacing: '.14em',
           marginBottom: 'clamp(40px,7vh,72px)',
         }}
       >
-        <span style={{ fontSize: 16 }}>←</span> back to events
-      </Link>
+        <span style={{ color: 'var(--rs-slate3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+          <span style={{ fontSize: 16 }}>←</span>
+          <span>back to...</span>
+        </span>
+        <Link href="/" style={{ color: 'var(--rs-slate3)', textDecoration: 'none' }}>
+          Home
+        </Link>
+        <span style={{ color: 'var(--rs-slate4)' }}>/</span>
+        <Link href="/events" style={{ color: 'var(--rs-violet)', textDecoration: 'none' }}>
+          all events
+        </Link>
+      </nav>
 
       {/* イベントヘッダー */}
       <header style={{ marginBottom: 'clamp(40px,7vh,72px)' }}>

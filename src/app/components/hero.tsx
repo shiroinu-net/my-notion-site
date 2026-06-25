@@ -6,9 +6,9 @@ export default function Hero() {
     <header id="top" data-reveal className={s.hero}>
       <div className={s.eyebrow}>
         <span className={s.eyebrowStar}>✦</span>
-        <span>singer&#8202;-&#8202;songwriter</span>
+        <span>musician&#8202;-&#8202;sound artist</span>
         <span className={s.eyebrowLine} />
-        <span>nagoya, jp</span>
+        <span>jp</span>
       </div>
 
       <div>

@@ -2,13 +2,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    
+
     .indicator{
-        width: 10px;
-        height: 10px;
-        background-color: var(--main-white);
+        width: 8px;
+        height: 8px;
+        background-color: var(--rs-lilac);
         border-radius: 50%;
         position: absolute;
-        left: -30px;
+        left: -28px;
     }
 }

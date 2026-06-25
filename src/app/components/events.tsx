@@ -33,7 +33,7 @@ export default async function Events() {
 
   return (
     <section id="events" data-reveal className={s.section}>
-      <SectionHeader title="Events" no="02" label="live" marginBottom="clamp(34px,6vh,64px)" />
+      <SectionHeader title="Events" no="02" label="upcoming & past" marginBottom="clamp(34px,6vh,64px)" />
 
       {/* Event list */}
       {events.map((page) => {

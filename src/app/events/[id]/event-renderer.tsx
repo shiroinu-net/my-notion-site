@@ -215,7 +215,10 @@ export default function EventRenderer({ blocks }: Props) {
       case 'image': {
         let src = '';
         if (block.image.type === 'external') {
-          src = block.image.external.url;
+          const externalUrl = block.image.external.url;
+          const skipDomains = ['gstatic.com', 'youtube.com', 'ytimg.com'];
+          if (skipDomains.some((d) => externalUrl.includes(d))) return null;
+          src = externalUrl;
         } else {
           // file type: ローカル取得済み画像を参照 (scripts/fetch-images.mjs の命名規則に合わせる)
           const filename = `${block.id}.webp`;

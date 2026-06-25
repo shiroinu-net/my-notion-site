@@ -77,10 +77,18 @@
   margin: 16px 0 0;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.9;
   color: var(--rs-slate2);
   max-width: 36ch;
+}
+
+.noteJa {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--rs-slate4);
 }
 
 /* 右カラム：リンク一覧 */

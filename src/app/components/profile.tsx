@@ -1,20 +1,25 @@
+import Image from "next/image";
 import SectionHeader from "./SectionHeader";
 import s from "./profile.module.css";
 
 export default function Profile() {
   return (
     <section id="profile" data-reveal className={s.section}>
-      <SectionHeader title="Profile" no="01" label="about" />
+      <SectionHeader title="Profile" no="01" label="who's rishao" />
 
       <div className={s.grid}>
         {/* 左：ポートレート */}
         <div className={s.portrait}>
-          <div className={s.portraitFrame} />
-          <p className={s.portraitCaption}>
-            図 01 — portrait
-            <br />
-            <em>drop an image</em>
-          </p>
+          <div className={s.portraitFrame}>
+            <Image
+              src="/profile.jpg"
+              alt="Rishao portrait"
+              fill
+              sizes="(max-width: 680px) 260px, (max-width: 980px) 28vw, 22vw"
+              className={s.portraitImg}
+            />
+          </div>
+          <p className={s.portraitCaption}>furry friend — mone</p>
         </div>
 
         {/* 中央：日本語本文 */}
