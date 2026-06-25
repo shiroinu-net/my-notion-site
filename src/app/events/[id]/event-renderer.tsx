@@ -296,7 +296,7 @@ export default function EventRenderer({ blocks }: Props) {
             <Tag key={i} style={{ margin: '0 0 18px', padding: 0, listStylePosition: 'outside' }}>
               {item.items.map((block) => (
                 <li key={block.id} style={{ ...listItemStyle, listStyleType: item.listType === 'ol' ? 'decimal' : 'disc' }}>
-                  <RichText text={block.type === 'bulleted_list_item' ? block.bulleted_list_item.rich_text : block.numbered_list_item.rich_text} />
+                  <RichText text={block.type === 'bulleted_list_item' ? (block as any).bulleted_list_item.rich_text : (block as any).numbered_list_item.rich_text} />
                 </li>
               ))}
             </Tag>
