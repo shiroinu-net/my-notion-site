@@ -194,7 +194,7 @@
 /* 一覧の各行 */
 .row {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) auto auto;
+  grid-template-columns: 116px minmax(0, 1fr) auto auto;
   align-items: center;
   gap: clamp(14px, 3vw, 32px);
   padding: clamp(16px, 2.4vh, 22px) 4px;
@@ -214,8 +214,8 @@
 
 /* サムネ（ジャケ） */
 .thumb {
-  width: 64px;
-  height: 64px;
+  width: 116px;
+  height: 116px;
 }
 
 .thumbImg {
@@ -272,7 +272,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 14px;
   margin-top: 22px;
   font-family: "Space Mono", monospace;
@@ -300,12 +300,12 @@
 /* レスポンシブ：狭い画面ではメタを畳む */
 @media (max-width: 600px) {
   .row {
-    grid-template-columns: 52px minmax(0, 1fr) auto;
+    grid-template-columns: 96px minmax(0, 1fr) auto;
   }
 
   .thumb {
-    width: 52px;
-    height: 52px;
+    width: 96px;
+    height: 96px;
   }
 
   .rowMeta {

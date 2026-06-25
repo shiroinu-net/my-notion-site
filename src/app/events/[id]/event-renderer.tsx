@@ -256,11 +256,54 @@ export default function EventRenderer({ blocks }: Props) {
     }
   };
 
+  // 連続する同種リストブロックをグループ化
+  const grouped: Array<{ type: 'list'; listType: 'ul' | 'ol'; items: BlockObjectResponse[] } | { type: 'block'; block: BlockObjectResponse }> = [];
+  for (const block of blocks) {
+    if (block.type === 'bulleted_list_item') {
+      const last = grouped[grouped.length - 1];
+      if (last?.type === 'list' && last.listType === 'ul') {
+        last.items.push(block);
+      } else {
+        grouped.push({ type: 'list', listType: 'ul', items: [block] });
+      }
+    } else if (block.type === 'numbered_list_item') {
+      const last = grouped[grouped.length - 1];
+      if (last?.type === 'list' && last.listType === 'ol') {
+        last.items.push(block);
+      } else {
+        grouped.push({ type: 'list', listType: 'ol', items: [block] });
+      }
+    } else {
+      grouped.push({ type: 'block', block });
+    }
+  }
+
+  const listItemStyle = {
+    margin: '0 0 8px 22px',
+    fontFamily: "'Noto Sans JP', sans-serif",
+    fontWeight: 300,
+    fontSize: 16,
+    lineHeight: 1.8,
+    color: 'var(--rs-slate1)',
+  };
+
   return (
     <div>
-      {blocks.map((block) => (
-        <div key={block.id}>{renderBlock(block)}</div>
-      ))}
+      {grouped.map((item, i) => {
+        if (item.type === 'list') {
+          const Tag = item.listType === 'ol' ? 'ol' : 'ul';
+          return (
+            <Tag key={i} style={{ margin: '0 0 18px', padding: 0, listStylePosition: 'outside' }}>
+              {item.items.map((block) => (
+                <li key={block.id} style={{ ...listItemStyle, listStyleType: item.listType === 'ol' ? 'decimal' : 'disc' }}>
+                  <RichText text={block.type === 'bulleted_list_item' ? block.bulleted_list_item.rich_text : block.numbered_list_item.rich_text} />
+                </li>
+              ))}
+            </Tag>
+          );
+        }
+        return <div key={item.block.id}>{renderBlock(item.block)}</div>;
+      })}
     </div>
   );
 }

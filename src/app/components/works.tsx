@@ -24,11 +24,6 @@ export default async function Works() {
 
       {/* Releases / Works 一覧（Notion 駆動・最新4件） */}
       <div className={s.archive}>
-        <div className={s.archiveHead}>
-          <span className={s.archiveLabel}>discography &amp; works</span>
-          <span className={s.archiveRule} />
-        </div>
-
         {works.map((w) => (
           <Link key={w.id} href={`/works/${w.id}`} className={s.row}>
             <div className={s.thumb}>
@@ -49,7 +44,6 @@ export default async function Works() {
         ))}
 
         <div className={s.footer}>
-          <span>— full discography updates from Notion.</span>
           <Link href="/works" className={s.viewAll}>
             view all <span>→</span>
           </Link>

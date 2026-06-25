@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "predev": "rm -rf .next && node scripts/fetch-images.mjs",
-    "dev": "next dev",
+    "dev": "next dev -p 3000",
     "prebuild": "node -r dotenv/config scripts/fetch-images.mjs",
     "build": "next build",
     "start": "next start",

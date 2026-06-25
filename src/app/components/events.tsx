@@ -43,6 +43,8 @@ export default async function Events() {
 
         const title = titleProp && 'title' in titleProp ? getRichTextContent(titleProp.title) : 'Untitled';
         const place = placeProp && 'rich_text' in placeProp ? getRichTextContent(placeProp.rich_text) : '';
+        const areaProp = page.properties.Area;
+        const area = areaProp && 'formula' in areaProp && areaProp.formula.type === 'string' ? areaProp.formula.string ?? '' : '';
 
         let dateStr = '';
         if (dateProp && 'date' in dateProp && dateProp.date) {
@@ -52,9 +54,9 @@ export default async function Events() {
         return (
           <Link key={page.id} href={`/events/${page.id}`} className={s.row}>
             <div className={s.date}>{dateStr}</div>
-            <div>
+            <div className={s.main}>
               <div className={s.title}>{title}</div>
-              <div className={s.place}>{place}</div>
+              <div className={s.place}>{place}{area && <span style={{ marginLeft: '0.4em', opacity: 0.7 }}>（{area}）</span>}</div>
             </div>
             <div className={s.arrow}>→</div>
           </Link>
@@ -62,7 +64,6 @@ export default async function Events() {
       })}
 
       <div className={s.footer}>
-        <span>— upcoming dates update automatically.</span>
         <Link href="/events" className={s.viewAll}>
           view all <span>→</span>
         </Link>

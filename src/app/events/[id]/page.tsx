@@ -15,13 +15,14 @@ export async function generateStaticParams() {
 const getTextFromProp = (
   page: any,
   propName: string,
-  type: 'rich_text' | 'title' | 'select' | 'status' = 'rich_text'
+  type: 'rich_text' | 'title' | 'select' | 'status' | 'formula' = 'rich_text'
 ) => {
   const prop = page.properties[propName];
   if (!prop) return '';
   if (type === 'rich_text' || type === 'title') return getRichTextContent(prop[type] || []);
   if (type === 'select') return prop.select?.name || '';
   if (type === 'status') return prop.status?.name || '';
+  if (type === 'formula') return prop.formula?.string || prop.formula?.number?.toString() || '';
   return '';
 };
 
@@ -93,6 +94,7 @@ export default async function EventPage({ params }: { params: { id: string } }) 
   if (statusRaw === '3..archive') statusLabel = 'archive';
 
   const placeText = getTextFromProp(currentPage, 'Place', 'rich_text');
+  const areaText = getTextFromProp(currentPage, 'Area', 'formula');
   const addressText = getTextFromProp(currentPage, 'Address', 'rich_text');
   const mapQuery = addressText || placeText;
   const mapUrl = mapQuery
@@ -212,7 +214,7 @@ export default async function EventPage({ params }: { params: { id: string } }) 
                   color: 'var(--rs-violet)',
                 }}
               >
-                {placeText}
+                {placeText}{areaText && <span style={{ fontSize: 16, color: 'var(--rs-slate3)' }}>（{areaText}）</span>}
               </span>
             )}
             {mapUrl && (

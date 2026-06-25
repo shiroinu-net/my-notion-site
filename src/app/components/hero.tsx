@@ -24,7 +24,7 @@ export default function Hero() {
 
       <div className={s.leadRow}>
         <p className={s.leadEn}>
-          a love for nameless phenomena, sung in cool, drifting electro&#8202;-&#8202;pop.
+          drawn to everything sound can touch — the named and the nameless alike.
         </p>
         
       </div>

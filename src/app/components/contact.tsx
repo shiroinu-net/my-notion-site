@@ -1,10 +1,11 @@
 import s from "./contact.module.css";
 
 const LINKS = [
-  { label: "instagram", href: "#" },
-  { label: "youtube", href: "#" },
-  { label: "bandcamp", href: "#" },
-  { label: "spotify", href: "#" },
+  { label: "instagram", href: "https://www.instagram.com/rishao_" },
+  { label: "youtube", href: "https://www.youtube.com/@rishao1765" },
+  { label: "bandcamp", href: "https://rishao.bandcamp.com/" },
+   { label: "applemusic", href: "https://music.apple.com/jp/artist/rishao/" },
+  { label: "spotify", href: "https://open.spotify.com/intl-ja/artist/5TBc2GgVHNTiYKwBJ1LDmV" },
 ];
 
 export default function Contact() {
@@ -23,7 +24,7 @@ export default function Contact() {
         {/* 左：メール */}
         <div>
           <div className={s.kicker}>booking / mail</div>
-          <a href="mailto:rishao.contact@gmail.com" className={s.mail}>
+          <a href="mailto:rishao.contact@gmail.com" className={s.mail} target="_blank" rel="noopener noreferrer">
             rishao.contact@gmail.com
           </a>
           <p className={s.note}>
@@ -39,7 +40,7 @@ export default function Contact() {
         <div className={s.links}>
           <div className={`${s.kicker} ${s.linksKicker}`}>links</div>
           {LINKS.map(({ label, href }) => (
-            <a key={label} href={href} className={s.link}>
+            <a key={label} href={href} className={s.link} target="_blank" rel="noopener noreferrer">
               <span>→</span>
               {label}
             </a>

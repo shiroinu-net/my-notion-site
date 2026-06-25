@@ -30,7 +30,11 @@ const navItems = [
   },
 ]
 
-export default function Index() {
+interface NavProps {
+  onClose: () => void;
+}
+
+export default function Index({ onClose }: NavProps) {
 
   const pathname = usePathname();
   const [selectedIndicator, setSelectedIndicator] = useState(pathname);
@@ -44,7 +48,7 @@ export default function Index() {
                     </div>
                     {
                       navItems.map( (data, index) => {
-                        return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator}></Link>
+                        return <Link key={index} data={{...data, index}} isActive={selectedIndicator == data.href} setSelectedIndicator={setSelectedIndicator} onClose={onClose}></Link>
                       })
                     }
             </div>

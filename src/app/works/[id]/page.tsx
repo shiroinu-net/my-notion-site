@@ -111,8 +111,8 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
       </nav>
 
       {/* 作品ヘッダー */}
-      <header style={{ marginBottom: 'clamp(40px,7vh,72px)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 26 }}>
+      <header style={{ marginBottom: 'clamp(40px,7vh,72px)', textAlign: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14, marginBottom: 26 }}>
           <span style={{ fontSize: 15, color: 'var(--rs-lilac)' }}>✦</span>
           {metaLine && (
             <span
@@ -141,7 +141,7 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
               objectFit: 'cover',
               borderRadius: 12,
               display: 'block',
-              marginBottom: 32,
+              margin: '0 auto 32px',
               boxShadow: '0 18px 50px -28px rgba(58,70,84,.5)',
             }}
           />
@@ -163,7 +163,7 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
 
         {/* ローマ字 / レーベル */}
         {(w.romaji || w.label) && (
-          <div style={{ marginTop: 16, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: 16 }}>
+          <div style={{ marginTop: 16, display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', justifyContent: 'center', gap: 16 }}>
             {w.romaji && (
               <span
                 style={{
@@ -193,7 +193,7 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
 
         {/* 配信リンク */}
         {streaming.length > 0 && (
-          <div style={{ marginTop: 28, display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ marginTop: 28, display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
             {streaming.map((l) => (
               <a
                 key={l.label}
@@ -227,7 +227,7 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
             display: 'block',
             height: 1,
             marginTop: 'clamp(34px,6vh,56px)',
-            background: 'linear-gradient(to right, var(--rs-slate4), transparent)',
+            background: 'linear-gradient(to right, transparent, var(--rs-slate4), transparent)',
             opacity: 0.5,
           }}
         />

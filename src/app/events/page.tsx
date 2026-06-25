@@ -113,6 +113,8 @@ export default async function EventsArchive() {
 
         const title = titleProp && 'title' in titleProp ? getRichTextContent(titleProp.title) : 'Untitled';
         const place = placeProp && 'rich_text' in placeProp ? getRichTextContent(placeProp.rich_text) : '';
+        const areaProp = page.properties.Area;
+        const area = areaProp && 'formula' in areaProp && areaProp.formula.type === 'string' ? areaProp.formula.string ?? '' : '';
 
         let dateStr = '';
         if (dateProp && 'date' in dateProp && dateProp.date) {
@@ -165,7 +167,7 @@ export default async function EventsArchive() {
                   marginTop: 4,
                 }}
               >
-                {place}
+                {place}{area && <span style={{ marginLeft: '0.4em', opacity: 0.7 }}>（{area}）</span>}
               </div>
             </div>
             <div

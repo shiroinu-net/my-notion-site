@@ -6,7 +6,7 @@ import RevealObserver from "./components/RevealObserver";
 
 export const metadata: Metadata = {
   title: "Rishao",
-  description: "a love for nameless phenomena, sung in cool, drifting electro-pop.",
+  description: "drawn to everything sound can touch — the named and the nameless alike. musician · sound artist · Nagoya.",
 };
 
 export default function RootLayout({

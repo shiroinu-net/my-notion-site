@@ -116,6 +116,21 @@
   color: var(--rs-slate4);
 }
 
+@media (max-width: 600px) {
+  .columns {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .note {
+    max-width: 100%;
+  }
+
+  .mail {
+    word-break: break-all;
+  }
+}
+
 /* フッター */
 .footer {
   margin-top: clamp(56px, 10vh, 100px);
