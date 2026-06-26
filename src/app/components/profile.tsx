@@ -24,10 +24,10 @@ export default function Profile() {
 
         {/* 中央：日本語本文 */}
         <div className={s.jpCol}>
-          <div className={s.nameBlock}>
-            <h3 className={s.name}>Rishao</h3>
+          <h1 className={s.nameBlock}>
+            <span className={s.name}>Rishao</span>
             <span className={s.igName}>リーシャオ</span>
-          </div>
+          </h1>
 
           {/* モバイルのみ：名前の直下に表示 */}
           <a
