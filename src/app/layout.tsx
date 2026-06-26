@@ -3,6 +3,7 @@ import "./globals.css";
 import WaterBackground from "./components/WaterBackground";
 import Header from "./components/header";
 import RevealObserver from "./components/RevealObserver";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Rishao",
@@ -25,6 +26,16 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-N41J60VR37"
+          strategy="afterInteractive"
+        />
+        <Script id="ga-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-N41J60VR37');
+        `}</Script>
         <WaterBackground />
         <RevealObserver />
         <Header />
