@@ -5,9 +5,16 @@
   margin-bottom: clamp(40px, 7vh, 80px);
 }
 
+@keyframes sparkle-lilac {
+  0%, 100% { opacity: .3;  color: var(--rs-lilac); }
+  50%       { opacity: 1;   color: #CEC7E4; }
+}
+
 .star {
   font-size: 16px;
   color: var(--rs-lilac);
+  animation: sparkle-lilac 5s ease-in-out infinite;
+  align-self: center;
 }
 
 .title {

@@ -36,10 +36,16 @@
 }
 
 /* ロゴ */
+@keyframes logo-draw {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
 .logo {
   display: block;
   width: clamp(200px, 30vw, 480px);
   height: auto;
+  animation: logo-draw 5.5s cubic-bezier(0.5, 1, 0.5, 1) 0.8s both;
 }
 
 /* ロゴ下の2つのリード文 */
@@ -74,6 +80,16 @@
   color: var(--rs-slate2);
 }
 
+@keyframes sparkle-right {
+  0%, 100% { opacity: .3;  transform: scale(.85); color: var(--rs-lilac); }
+  50%       { opacity: 1;  transform: scale(1.05); color: #CEC7E4; }
+}
+
+@keyframes sparkle-left {
+  0%, 100% { opacity: .3;  transform: scale(.85); color: var(--rs-slate4); }
+  50%       { opacity: 1;  transform: scale(1.05); color: #A4C0CB; }
+}
+
 /* 装飾のキラキラ */
 .sparkleRight {
   position: absolute;
@@ -81,7 +97,7 @@
   top: 46%;
   font-size: 24px;
   color: var(--rs-lilac);
-  animation: rs-twinkle 5s ease-in-out infinite;
+  animation: sparkle-right 5s ease-in-out infinite;
 }
 
 .sparkleLeft {
@@ -90,5 +106,10 @@
   bottom: 14%;
   font-size: 14px;
   color: var(--rs-slate4);
-  animation: rs-twinkle 6.5s ease-in-out infinite 0.8s;
+  animation: sparkle-left 6.5s ease-in-out infinite 0.8s;
+}
+
+@media (min-width: 768px) {
+  .sparkleRight { font-size: 36px; }
+  .sparkleLeft  { font-size: 22px; }
 }

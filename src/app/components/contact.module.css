@@ -26,16 +26,26 @@
   line-height: 1;
 }
 
+@keyframes sparkle-lilac {
+  0%, 100% { opacity: .3;  color: var(--rs-lilac); }
+  50%       { opacity: 1;   color: #CEC7E4; }
+}
+
+@keyframes sparkle-rose {
+  0%, 100% { opacity: .3;  color: var(--rs-rose); }
+  50%       { opacity: 1;   color: #E8D0D3; }
+}
+
 .starLeft {
   font-size: 18px;
   color: var(--rs-lilac);
-  animation: rs-twinkle 6s ease-in-out infinite;
+  animation: sparkle-lilac 6s ease-in-out infinite;
 }
 
 .starRight {
   font-size: 18px;
   color: var(--rs-rose);
-  animation: rs-twinkle 6s ease-in-out infinite 1s;
+  animation: sparkle-rose 6s ease-in-out infinite 1s;
 }
 
 /* 見出し下の罫線 */
