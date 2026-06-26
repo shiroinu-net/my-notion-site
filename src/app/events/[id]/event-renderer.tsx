@@ -222,8 +222,7 @@ export default function EventRenderer({ blocks }: Props) {
         } else {
           // file type: ローカル取得済み画像を参照 (scripts/fetch-images.mjs の命名規則に合わせる)
           const filename = `${block.id}.webp`;
-          const basePath = process.env.NODE_ENV === 'production' ? '/my-notion-site' : '';
-          src = `${basePath}/notion-images/${filename}`;
+          src = `/notion-images/${filename}`;
         }
         const caption = block.image.caption?.length ? (
           <figcaption

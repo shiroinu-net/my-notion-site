@@ -136,6 +136,5 @@ export function publishedSortedWorks(pages: PageObjectResponse[]): PageObjectRes
 
 // Cover 画像のローカルパス（fetch-images.mjs が cover-<pageId>.webp で保存）
 export function coverImagePath(pageId: string): string {
-  const basePath = process.env.NODE_ENV === 'production' ? '/my-notion-site' : '';
-  return `${basePath}/notion-images/cover-${pageId}.webp`;
+  return `/notion-images/cover-${pageId}.webp`;
 }

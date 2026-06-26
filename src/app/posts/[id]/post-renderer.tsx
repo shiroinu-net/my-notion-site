@@ -93,10 +93,7 @@ export default function PostRenderer({ blocks }: Props) {
              // Logic must match scripts/fetch-images.mjs naming convention
              const filename = `${block.id}.webp`;
              
-             // Determine base path based on environment
-             // production build on GitHub Pages uses /my-notion-site
-             const basePath = process.env.NODE_ENV === 'production' ? '/my-notion-site' : '';
-             src = `${basePath}/notion-images/${filename}`;
+             src = `/notion-images/${filename}`;
          }
 
          const caption = block.image.caption?.length ? <div className="text-center text-sm text-gray-500 mt-1"><RichText text={block.image.caption} /></div> : null;

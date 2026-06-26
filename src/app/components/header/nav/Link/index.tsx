@@ -13,12 +13,10 @@ interface Props {
   onClose: () => void;
 }
 
-const basePath = process.env.NODE_ENV === 'production' ? '/my-notion-site' : '';
-
 export default function Index({data, isActive, setSelectedIndicator, onClose}: Props) {
 
     const { title, href, index} = data;
-    const fullHref = `${basePath}${href}`;
+    const fullHref = href;
 
     return (
       <motion.div className={styles.link} onMouseEnter={() => {setSelectedIndicator(href)}} custom={index} variants={slide} initial="initial" animate="enter" exit="exit">
