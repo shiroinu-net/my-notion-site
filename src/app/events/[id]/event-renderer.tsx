@@ -89,8 +89,8 @@ export default function EventRenderer({ blocks }: Props) {
               margin: '0 0 18px',
               fontFamily: "'Noto Sans JP', sans-serif",
               fontWeight: 300,
-              fontSize: 16,
-              lineHeight: 1.95,
+              fontSize: 14.5,
+              lineHeight: 2.15,
               color: 'var(--rs-slate1)',
               whiteSpace: 'pre-wrap',
             }}
@@ -151,8 +151,8 @@ export default function EventRenderer({ blocks }: Props) {
               listStyleType: 'disc',
               fontFamily: "'Noto Sans JP', sans-serif",
               fontWeight: 300,
-              fontSize: 16,
-              lineHeight: 1.8,
+              fontSize: 14.5,
+              lineHeight: 2.15,
               color: 'var(--rs-slate1)',
             }}
           >
@@ -167,8 +167,8 @@ export default function EventRenderer({ blocks }: Props) {
               listStyleType: 'decimal',
               fontFamily: "'Noto Sans JP', sans-serif",
               fontWeight: 300,
-              fontSize: 16,
-              lineHeight: 1.8,
+              fontSize: 14.5,
+              lineHeight: 2.15,
               color: 'var(--rs-slate1)',
             }}
           >
@@ -281,13 +281,13 @@ export default function EventRenderer({ blocks }: Props) {
     margin: '0 0 8px 22px',
     fontFamily: "'Noto Sans JP', sans-serif",
     fontWeight: 300,
-    fontSize: 16,
-    lineHeight: 1.8,
+    fontSize: 14.5,
+    lineHeight: 2.15,
     color: 'var(--rs-slate1)',
   };
 
   return (
-    <div>
+    <div style={{ overflowWrap: 'break-word' }}>
       {grouped.map((item, i) => {
         if (item.type === 'list') {
           const Tag = item.listType === 'ol' ? 'ol' : 'ul';

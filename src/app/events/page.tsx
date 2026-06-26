@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getDatabasePages, getRichTextContent } from '../../../lib/notion';
+import s from './page.module.css';
 
 export const revalidate = 60;
 
@@ -122,21 +123,9 @@ export default async function EventsArchive() {
         }
 
         return (
-          <Link
-            key={page.id}
-            href={`/events/${page.id}`}
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '140px minmax(0,1fr) auto',
-              gap: 'clamp(16px,3vw,40px)',
-              alignItems: 'center',
-              padding: 'clamp(20px,3vh,30px) 8px',
-              borderTop: '1px solid rgba(110,134,155,.28)',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
+          <Link key={page.id} href={`/events/${page.id}`} className={s.row}>
             <div
+              className={s.date}
               style={{
                 fontFamily: "'Space Mono', monospace",
                 fontSize: 13,
@@ -146,7 +135,7 @@ export default async function EventsArchive() {
             >
               {dateStr}
             </div>
-            <div>
+            <div className={s.main}>
               <div
                 style={{
                   fontFamily: "'Noto Serif JP', serif",
@@ -170,19 +159,7 @@ export default async function EventsArchive() {
                 {place}{area && <span style={{ marginLeft: '0.4em', opacity: 0.7 }}>（{area}）</span>}
               </div>
             </div>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 14,
-                fontFamily: "'Space Mono', monospace",
-                fontSize: 11,
-                letterSpacing: '.12em',
-                color: 'var(--rs-slate4)',
-              }}
-            >
-              <span style={{ fontSize: 18, color: 'var(--rs-slate3)' }}>→</span>
-            </div>
+            <div className={s.arrow} style={{ fontSize: 18, color: 'var(--rs-slate3)' }}>→</div>
           </Link>
         );
       })}

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getWorksPages, getWorkData, publishedSortedWorks, coverImagePath } from '../../../lib/notion';
+import s from './page.module.css';
 
 export const revalidate = 60;
 
@@ -93,18 +94,9 @@ export default async function WorksArchive() {
         <Link
           key={w.id}
           href={`/works/${w.id}`}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '80px minmax(0,1fr) auto auto',
-            gap: 'clamp(16px,3vw,40px)',
-            alignItems: 'center',
-            padding: 'clamp(18px,2.6vh,26px) 8px',
-            borderTop: '1px solid rgba(110,134,155,.28)',
-            textDecoration: 'none',
-            color: 'inherit',
-          }}
+          className={s.row}
         >
-          <div style={{ width: 80, height: 80 }}>
+          <div className={s.thumb}>
             {w.hasCover ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -124,7 +116,7 @@ export default async function WorksArchive() {
               />
             )}
           </div>
-          <div style={{ minWidth: 0 }}>
+          <div className={s.info}>
             <div
               style={{
                 fontFamily: "'Noto Serif JP', serif",
@@ -151,6 +143,7 @@ export default async function WorksArchive() {
             )}
           </div>
           <div
+            className={s.meta}
             style={{
               fontFamily: "'Space Mono', monospace",
               fontSize: 12,
@@ -161,7 +154,7 @@ export default async function WorksArchive() {
           >
             {metaLine(w.type, w.date)}
           </div>
-          <div style={{ fontSize: 18, color: 'var(--rs-slate3)' }}>→</div>
+          <div className={s.arrow} style={{ fontSize: 18, color: 'var(--rs-slate3)' }}>→</div>
         </Link>
       ))}
 

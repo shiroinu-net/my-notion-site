@@ -37,12 +37,18 @@ interface NavProps {
 export default function Index({ onClose }: NavProps) {
 
   const pathname = usePathname();
-  const [selectedIndicator, setSelectedIndicator] = useState(pathname);
+  const getCurrentHref = () => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      return pathname + window.location.hash;
+    }
+    return pathname;
+  };
+  const [selectedIndicator, setSelectedIndicator] = useState(getCurrentHref);
 
   return (
     <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit" className={styles.menu}>
        <div className={styles.body}>
-            <div onMouseLeave={() => {setSelectedIndicator(pathname)}} className={styles.nav}>
+            <div onMouseLeave={() => {setSelectedIndicator(getCurrentHref())}} className={styles.nav}>
                     <div className={styles.header}>
                         <p>Menu</p>
                     </div>
