@@ -36,16 +36,10 @@
 }
 
 /* ロゴ */
-@keyframes logo-draw {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0% 0 0); }
-}
-
 .logo {
   display: block;
   width: clamp(200px, 30vw, 480px);
   height: auto;
-  animation: logo-draw 5.5s cubic-bezier(0.5, 1, 0.5, 1) 0.8s both;
 }
 
 /* ロゴ下の2つのリード文 */

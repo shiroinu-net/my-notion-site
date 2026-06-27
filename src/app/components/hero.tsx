@@ -1,5 +1,5 @@
-import Image from "next/image";
 import s from "./hero.module.css";
+import LogoSvg from "./LogoSvg";
 
 export default function Hero() {
   return (
@@ -12,14 +12,7 @@ export default function Hero() {
       </div>
 
       <div>
-        <Image
-          src="/logo.svg"
-          alt="Rishao"
-          width={480}
-          height={241}
-          priority
-          className={s.logo}
-        />
+        <LogoSvg className={s.logo} />
       </div>
 
       <div className={s.leadRow}>

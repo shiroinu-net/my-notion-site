@@ -39,13 +39,13 @@
 .starLeft {
   font-size: 18px;
   color: var(--rs-lilac);
-  animation: sparkle-lilac 6s ease-in-out infinite;
+  animation: sparkle-lilac 3s ease-in-out infinite;
 }
 
 .starRight {
   font-size: 18px;
   color: var(--rs-rose);
-  animation: sparkle-rose 6s ease-in-out infinite 1s;
+  animation: sparkle-rose 3s ease-in-out infinite 1s;
 }
 
 /* 見出し下の罫線 */

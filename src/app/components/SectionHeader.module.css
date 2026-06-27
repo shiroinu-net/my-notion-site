@@ -13,7 +13,7 @@
 .star {
   font-size: 16px;
   color: var(--rs-lilac);
-  animation: sparkle-lilac 5s ease-in-out infinite;
+  animation: sparkle-lilac 3s ease-in-out infinite;
   align-self: center;
 }
 
