@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getWorksPages, getWorkData, publishedSortedWorks, coverImagePath } from '../../../lib/notion';
 import s from './page.module.css';
+import WorksFooter from './footer';
 
 export const revalidate = 60;
 
@@ -158,41 +159,7 @@ export default async function WorksArchive() {
         </Link>
       ))}
 
-      <div
-        style={{
-          marginTop: 'clamp(40px,6vh,72px)',
-          paddingTop: 22,
-          borderTop: '1px solid rgba(110,134,155,.28)',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
-        <Link
-          href="/#works"
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: 11,
-            letterSpacing: '.12em',
-            fontStyle: 'italic',
-            color: 'var(--rs-slate4)',
-          }}
-        >
-          ← back to home
-        </Link>
-        <a
-          href="#"
-          style={{
-            fontFamily: "'Space Mono', monospace",
-            fontSize: 11,
-            letterSpacing: '.12em',
-            fontStyle: 'italic',
-            color: 'var(--rs-slate4)',
-          }}
-        >
-          ↑ top
-        </a>
-      </div>
+      <WorksFooter />
     </main>
   );
 }
