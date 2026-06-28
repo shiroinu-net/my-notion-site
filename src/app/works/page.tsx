@@ -160,16 +160,38 @@ export default async function WorksArchive() {
 
       <div
         style={{
-          borderTop: '1px solid rgba(110,134,155,.28)',
+          marginTop: 'clamp(40px,6vh,72px)',
           paddingTop: 22,
-          fontFamily: "'Space Mono', monospace",
-          fontSize: 11,
-          letterSpacing: '.1em',
-          color: 'var(--rs-slate4)',
-          fontStyle: 'italic',
+          borderTop: '1px solid rgba(110,134,155,.28)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
-        — that&apos;s all, for now.
+        <Link
+          href="/#works"
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 11,
+            letterSpacing: '.12em',
+            fontStyle: 'italic',
+            color: 'var(--rs-slate4)',
+          }}
+        >
+          ← back to home
+        </Link>
+        <a
+          href="#"
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 11,
+            letterSpacing: '.12em',
+            fontStyle: 'italic',
+            color: 'var(--rs-slate4)',
+          }}
+        >
+          ↑ top
+        </a>
       </div>
     </main>
   );

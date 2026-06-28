@@ -134,15 +134,11 @@ export default async function EventPage({ params }: { params: { id: string } }) 
           marginBottom: 'clamp(40px,7vh,72px)',
         }}
       >
-        <span style={{ color: 'var(--rs-slate3)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-          <span style={{ fontSize: 16 }}>←</span>
-          <span>back to...</span>
-        </span>
-        <Link href="/" style={{ color: 'var(--rs-slate3)', textDecoration: 'none' }}>
-          Home
+        <Link href="/" style={{ color: 'var(--rs-slate3)', textDecoration: 'underline', textUnderlineOffset: 3, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 16 }}>←</span> back to home
         </Link>
         <span style={{ color: 'var(--rs-slate4)' }}>/</span>
-        <Link href="/events" style={{ color: 'var(--rs-violet)', textDecoration: 'none' }}>
+        <Link href="/events" style={{ color: 'var(--rs-violet)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
           all events
         </Link>
       </nav>
@@ -273,6 +269,9 @@ export default async function EventPage({ params }: { params: { id: string } }) 
           marginTop: 'clamp(56px,9vh,96px)',
           paddingTop: 24,
           borderTop: '1px solid rgba(110,134,155,.28)',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
         }}
       >
         <Link
@@ -287,6 +286,18 @@ export default async function EventPage({ params }: { params: { id: string } }) 
         >
           ← all events
         </Link>
+        <a
+          href="#"
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: 11,
+            letterSpacing: '.12em',
+            fontStyle: 'italic',
+            color: 'var(--rs-slate4)',
+          }}
+        >
+          ↑ top
+        </a>
       </div>
     </main>
   );

@@ -51,7 +51,7 @@ export default function Profile() {
             href="https://www.instagram.com/rishao_/"
             target="_blank"
             rel="noopener noreferrer"
-            className={s.igLink}
+            className={`${s.igLink} ${s.igLinkDesktop}`}
           >
             @rishao_
             <span className={s.igLabel}>Instagram</span>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import type { BlockObjectResponse, RichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
 type Props = {
@@ -62,6 +63,15 @@ const RichText = ({ text }: { text: RichTextItemResponse[] }) => {
 };
 
 export default function EventRenderer({ blocks }: Props) {
+  const [modalSrc, setModalSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!modalSrc) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setModalSrc(null); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [modalSrc]);
+
   if (!blocks || blocks.length === 0) {
     return (
       <p
@@ -239,12 +249,21 @@ export default function EventRenderer({ blocks }: Props) {
           </figcaption>
         ) : null;
         return (
-          <figure style={{ margin: '28px 0' }}>
+          <figure style={{ margin: '28px 0', textAlign: 'center' }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={src}
               alt="Event image"
-              style={{ width: '100%', height: 'auto', borderRadius: 10, display: 'block' }}
+              onClick={() => setModalSrc(src)}
+              style={{
+                maxWidth: '100%',
+                width: 'auto',
+                maxHeight: 520,
+                borderRadius: 10,
+                display: 'block',
+                margin: '0 auto',
+                cursor: 'zoom-in',
+              }}
             />
             {caption}
           </figure>
@@ -287,22 +306,53 @@ export default function EventRenderer({ blocks }: Props) {
   };
 
   return (
-    <div style={{ overflowWrap: 'break-word' }}>
-      {grouped.map((item, i) => {
-        if (item.type === 'list') {
-          const Tag = item.listType === 'ol' ? 'ol' : 'ul';
-          return (
-            <Tag key={i} style={{ margin: '0 0 18px', padding: 0, listStylePosition: 'outside' }}>
-              {item.items.map((block) => (
-                <li key={block.id} style={{ ...listItemStyle, listStyleType: item.listType === 'ol' ? 'decimal' : 'disc' }}>
-                  <RichText text={block.type === 'bulleted_list_item' ? (block as any).bulleted_list_item.rich_text : (block as any).numbered_list_item.rich_text} />
-                </li>
-              ))}
-            </Tag>
-          );
-        }
-        return <div key={item.block.id}>{renderBlock(item.block)}</div>;
-      })}
-    </div>
+    <>
+      <div style={{ overflowWrap: 'break-word' }}>
+        {grouped.map((item, i) => {
+          if (item.type === 'list') {
+            const Tag = item.listType === 'ol' ? 'ol' : 'ul';
+            return (
+              <Tag key={i} style={{ margin: '0 0 18px', padding: 0, listStylePosition: 'outside' }}>
+                {item.items.map((block) => (
+                  <li key={block.id} style={{ ...listItemStyle, listStyleType: item.listType === 'ol' ? 'decimal' : 'disc' }}>
+                    <RichText text={block.type === 'bulleted_list_item' ? (block as any).bulleted_list_item.rich_text : (block as any).numbered_list_item.rich_text} />
+                  </li>
+                ))}
+              </Tag>
+            );
+          }
+          return <div key={item.block.id}>{renderBlock(item.block)}</div>;
+        })}
+      </div>
+
+      {modalSrc && (
+        <div
+          onClick={() => setModalSrc(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 200,
+            background: 'rgba(20,26,32,.5)',
+            backdropFilter: 'blur(10px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'zoom-out',
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={modalSrc}
+            alt=""
+            style={{
+              maxWidth: '90vw',
+              maxHeight: '90vh',
+              objectFit: 'contain',
+              borderRadius: 12,
+            }}
+          />
+        </div>
+      )}
+    </>
   );
 }

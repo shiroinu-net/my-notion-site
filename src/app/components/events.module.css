@@ -14,9 +14,18 @@
   gap: clamp(16px, 3vw, 40px);
   align-items: center;
   padding: clamp(20px, 3vh, 30px) 8px;
-  border-top: 1px solid rgba(110, 134, 155, 0.28);
+  border-top: none;
+  background-image: radial-gradient(circle, rgba(110, 134, 155, 0.45) 0.1px, transparent 1.5px);
+  background-size: 10px 3px;
+  background-repeat: repeat-x;
+  background-position: 0 0;
   text-decoration: none;
   color: inherit;
+  transition: background-color 0.25s ease;
+}
+
+.row:hover {
+  background-color: rgba(159, 178, 194, 0.08);
 }
 
 .date {
@@ -56,7 +65,11 @@
   justify-content: flex-end;
   gap: 16px;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(110, 134, 155, 0.28);
+  border-top: none;
+  background-image: radial-gradient(circle, rgba(110, 134, 155, 0.45) 0.1px, transparent 1.5px);
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 0;
   padding-top: 22px;
   font-family: "Space Mono", monospace;
   font-size: 11px;

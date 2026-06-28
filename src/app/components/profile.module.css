@@ -165,7 +165,11 @@
   margin-bottom: 0;
 }
 
-/* レスポンシブ：狭い画面でカラムを畳む */
+/* デスクトップ：mobile用リンクを非表示 */
+.igLinkMobile {
+  display: none;
+}
+
 @media (max-width: 980px) {
   /* ポートレートを左に、日本語→英語を右に縦積み */
   .grid {
@@ -175,11 +179,16 @@
       "portrait en";
     gap: clamp(28px, 4vw, 56px) clamp(28px, 4vw, 56px);
   }
-}
 
-/* デスクトップ：mobile用リンクを非表示 */
-.igLinkMobile {
-  display: none;
+  /* タブレット：名前直下リンクを表示、本文後リンクを隠す */
+  .igLinkMobile {
+    display: inline-flex;
+    margin-bottom: 18px;
+  }
+
+  .igLinkDesktop {
+    display: none;
+  }
 }
 
 @media (max-width: 680px) {
@@ -199,12 +208,10 @@
     margin: 0 auto;
   }
 
-  /* デスクトップ側のigLinkを隠す */
-  .igLink:not(.igLinkMobile) {
+  .igLinkDesktop {
     display: none;
   }
 
-  /* EN文の後に来るmobile用リンクを表示 */
   .igLinkMobile {
     display: inline-flex;
     margin-bottom: 26px;
