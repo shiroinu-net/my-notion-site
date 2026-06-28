@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './style.module.scss';
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
@@ -32,25 +32,22 @@ const navItems = [
 
 interface NavProps {
   onClose: () => void;
+  activeSection: string;
 }
 
-export default function Index({ onClose }: NavProps) {
+export default function Index({ onClose, activeSection }: NavProps) {
 
   const pathname = usePathname();
-  const getCurrentHref = () => {
-    if (typeof window !== 'undefined' && window.location.hash) {
-      return pathname + window.location.hash;
-    }
-    if (pathname.startsWith('/events')) return '/#events';
-    if (pathname.startsWith('/works')) return '/#works';
-    return pathname;
-  };
-  const [selectedIndicator, setSelectedIndicator] = useState(getCurrentHref);
+  const [selectedIndicator, setSelectedIndicator] = useState(activeSection);
+
+  useEffect(() => {
+    setSelectedIndicator(activeSection);
+  }, [activeSection]);
 
   return (
     <motion.div variants={menuSlide} initial="initial" animate="enter" exit="exit" className={styles.menu}>
        <div className={styles.body}>
-            <div onMouseLeave={() => {setSelectedIndicator(getCurrentHref())}} className={styles.nav}>
+            <div onMouseLeave={() => {setSelectedIndicator(activeSection)}} className={styles.nav}>
                     <div className={styles.header}>
                         <p>Menu</p>
                     </div>
