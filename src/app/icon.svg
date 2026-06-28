@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#262A30"/>
+  <!-- main sparkle: 4-pointed star with concave edges, perfectly symmetric around (16,16) -->
+  <path d="M16 3
+           C16.6 11.4 20.6 15.4 29 16
+           C20.6 16.6 16.6 20.6 16 29
+           C15.4 20.6 11.4 16.6 3 16
+           C11.4 15.4 15.4 11.4 16 3 Z"
+        fill="#D3A9B0"/>
+  <!-- small sparkle, top-right -->
+  <path d="M24.5 5
+           C24.7 7.8 25.7 8.8 28.5 9
+           C25.7 9.2 24.7 10.2 24.5 13
+           C24.3 10.2 23.3 9.2 20.5 9
+           C23.3 8.8 24.3 7.8 24.5 5 Z"
+        fill="#B6AECB" opacity="0.9"/>
+</svg>
