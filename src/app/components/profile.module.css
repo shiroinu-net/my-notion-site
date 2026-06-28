@@ -189,6 +189,7 @@
   .igLinkDesktop {
     display: none;
   }
+
 }
 
 @media (max-width: 680px) {
@@ -215,5 +216,10 @@
   .igLinkMobile {
     display: inline-flex;
     margin-bottom: 26px;
+  }
+
+  .body,
+  .enBody {
+    max-width: 100%;
   }
 }
