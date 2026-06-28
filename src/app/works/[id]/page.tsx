@@ -97,13 +97,12 @@ export default async function WorkPage({ params }: { params: { id: string } }) {
           marginBottom: 'clamp(40px,7vh,72px)',
         }}
       >
-        <Link href="/" style={{ color: 'var(--rs-slate3)', textDecoration: 'underline', textUnderlineOffset: 3, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ fontSize: 16 }}>←</span> back to home
-        </Link>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+          <span style={{ fontSize: 16, color: 'var(--rs-slate3)' }}>←</span>
+          <Link href="/" style={{ color: 'var(--rs-slate3)' }}>back to home</Link>
+        </span>
         <span style={{ color: 'var(--rs-slate4)' }}>/</span>
-        <Link href="/works" style={{ color: 'var(--rs-violet)', textDecoration: 'underline', textUnderlineOffset: 3 }}>
-          all works
-        </Link>
+        <Link href="/works" style={{ color: 'var(--rs-violet)' }}>all works</Link>
       </nav>
 
       {/* 作品ヘッダー */}

@@ -202,9 +202,10 @@ export default async function PostPage({ params }: { params: { id: string } }) {
       {/* ナビゲーション */}
       <nav className="border-b py-4 mb-8">
         <div className="container mx-auto px-4 max-w-3xl">
-          <Link href="/" className="text-sm font-medium text-gray-500 hover:text-gray-900 flex items-center transition-colors">
-            <span className="mr-1">←</span> Back to Home
-          </Link>
+          <span className="flex items-center gap-1 text-sm font-medium text-gray-500">
+            <span>←</span>
+            <Link href="/" className="hover:text-gray-900 transition-colors">Back to Home</Link>
+          </span>
         </div>
       </nav>
 

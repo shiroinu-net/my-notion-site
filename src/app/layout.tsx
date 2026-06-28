@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import WaterBackground from "./components/WaterBackground";
+import dynamic from "next/dynamic";
 import Header from "./components/header";
 import RevealObserver from "./components/RevealObserver";
 import Script from "next/script";
+
+const WaterBackground = dynamic(() => import("./components/WaterBackground"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: "Rishao",
