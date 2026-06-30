@@ -1,3 +1,8 @@
+export const metadata = {
+  title: 'Color System Verification',
+  robots: { index: false, follow: false },
+};
+
 export default function ColorTestPage() {
   return (
     <div className="p-8 bg-bg-pale-gray min-h-screen text-main-charcoal">

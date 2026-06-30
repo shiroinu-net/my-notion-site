@@ -36,6 +36,15 @@ const formatDate = (dateString: string) => {
   return timePart ? `${dateLabel} · ${timePart}` : dateLabel;
 };
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const pages = await getDatabasePages();
+  const currentPage = pages.find((page) => page.id === params.id);
+  const title = currentPage
+    ? getTextFromProp(currentPage, 'Title', 'title') || 'Untitled Event'
+    : 'Event not found';
+  return { title: `${title} | Rishao` };
+}
+
 export default async function EventPage({ params }: { params: { id: string } }) {
   const pageId = params.id;
   const blocks = await getPageBlocks(pageId);

@@ -6,7 +6,7 @@ import WorksFooter from './footer';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'Works — Rishao',
+  title: 'Works | Rishao',
   description: 'Discography and works archive.',
 };
 

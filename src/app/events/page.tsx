@@ -5,7 +5,7 @@ import s from './page.module.css';
 export const revalidate = 60;
 
 export const metadata = {
-  title: 'Events — Rishao',
+  title: 'Events | Rishao',
   description: 'All live dates and events.',
 };
 

@@ -16,6 +16,13 @@ const formatDate = (dateString: string) => {
   return [y, m, d].filter(Boolean).join(' · ');
 };
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const pages = await getWorksPages();
+  const currentPage = pages.find((page) => page.id === params.id);
+  const title = currentPage ? getWorkData(currentPage).title || 'Untitled Work' : 'Work not found';
+  return { title: `${title} | Rishao` };
+}
+
 export default async function WorkPage({ params }: { params: { id: string } }) {
   const pageId = params.id;
   const blocks = await getPageBlocks(pageId);

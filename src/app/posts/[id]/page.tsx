@@ -144,6 +144,15 @@ const renderPropertyValue = (property: any) => {
   }
 };
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const pages = await getDatabasePages();
+  const currentPage = pages.find((page) => page.id === params.id);
+  const title = currentPage
+    ? getTextFromProp(currentPage, 'Title', 'title') || 'Untitled Post'
+    : 'Post not found';
+  return { title: `${title} | Rishao` };
+}
+
 export default async function PostPage({ params }: { params: { id: string } }) {
   const pageId = params.id;
   const blocks = await getPageBlocks(pageId);
